@@ -54,7 +54,7 @@ export default function Hero() {
 
 
 							<div className={`mx-auto w-fit mb-8 ${brush.className}`} data-aos="zoom-y-out" data-aos-delay="200">
-								<div className='relative h-[175px] w-[120px]'>
+								<div className='relative h-[175px] w-[120px]' data-aos="zoom-y-out" data-aos-delay="250">
 									<Image src={"/images/lapin-green.png"} fill alt='rabbit' />
 								</div>
 								Lapin the Librarian
