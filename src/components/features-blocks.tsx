@@ -19,7 +19,7 @@ export default function FeaturesBlocks() {
 					<div className="max-w-sm mx-auto grid gap-6 md:grid-cols-2 lg:grid-cols-3 items-start md:max-w-2xl lg:max-w-none">
 
 						{/* 1st item */}
-						<div className="relative flex flex-col items-center p-6 bg-white rounded shadow-xl">
+						<div className="relative flex flex-col items-center p-6 bg-white rounded shadow-xl text-center">
 							<IconBook2 />
 
 							<h4 className="text-xl leading-snug tracking-tight mb-1">Create Your Bookshelf</h4>
