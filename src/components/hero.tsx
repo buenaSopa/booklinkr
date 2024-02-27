@@ -4,6 +4,8 @@ import { brush, cavier, maely } from '@/lib/fonts'
 import Balancer from 'react-wrap-balancer'
 import { Button } from './ui/button'
 import Image from 'next/image'
+import { site } from '@/config/site'
+import Link from 'next/link'
 
 export default function Hero() {
 	return (
@@ -60,11 +62,13 @@ export default function Hero() {
 
 							<div className="max-w-xs mx-auto sm:max-w-none sm:flex sm:justify-center" data-aos="zoom-y-out" data-aos-delay="300">
 								<Button className={`text-2xl ${maely.className} w-full mb-4 sm:w-auto sm:mb-0`}>
-									Get Started
+									<Link href={site.formLink}>
+									 Join waiting list
+									</Link>
 								</Button>
-								<Button className={`text-2xl ${maely.className} w-full sm:w-auto sm:ml-4`}>
-									Learn More
-								</Button>
+								{/* <Button className={`text-2xl ${maely.className} w-full sm:w-auto sm:ml-4`}> */}
+								{/* 	Learn More */}
+								{/* </Button> */}
 							</div>
 						</div>
 					</div>

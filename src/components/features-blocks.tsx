@@ -36,8 +36,8 @@ export default function FeaturesBlocks() {
 						{/* 3rd item */}
 						<div className="relative flex flex-col items-center p-6 bg-white rounded shadow-xl">
 							<IconFreeRights />
-							<h4 className="text-xl leading-snug tracking-tight mb-1">Free and Accessible</h4>
-							<p className="text-gray-600 text-center">BookLinkr is free to use, providing an inclusive platform for book lovers of all backgrounds to connect and share their passion for literature.</p>
+							<h4 className="text-xl leading-snug tracking-tight mb-1">Free tier</h4>
+							<p className="text-gray-600 text-center">Basic BookLinkr features are free to use, providing an inclusive platform for book lovers of all backgrounds to connect and share their passion for literature.</p>
 						</div>
 
 						{/* 4th item */}

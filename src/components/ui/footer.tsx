@@ -101,8 +101,6 @@ export default function Footer() {
                       </svg>
                     </button>
                   </div>
-                  {/* Success message */}
-                  {/* <p className="mt-2 text-green-600 text-sm">Thanks for subscribing!</p> */}
                 </div>
               </div>
             </form>

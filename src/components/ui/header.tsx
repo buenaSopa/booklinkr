@@ -44,22 +44,27 @@ export default function Header() {
 						<ul className="flex grow justify-end flex-wrap items-center">
 							<li>
 								<Button className={`text-lg ${maely.className} w-full sm:w-auto`}>
-									<Link href="/signin" className="transition duration-150 ease-in-out">Sign in</Link>
+									Coming Soon
 								</Button>
+							</li>
+							{/* <li> */}
+							{/* 	<Button className={`text-lg ${maely.className} w-full sm:w-auto`}> */}
+							{/* 		<Link href="/signin" className="transition duration-150 ease-in-out">Sign in</Link> */}
+							{/* 	</Button> */}
 
-							</li>
-							<li>
-								<Button className={`text-lg ${maely.className} w-full sm:w-auto ml-3`}>
-									<Link href="/signup" className="">
-										<span>Sign up</span>
-									</Link>
-								</Button>
-							</li>
+							{/* </li> */}
+							{/* <li> */}
+							{/* 	<Button className={`text-lg ${maely.className} w-full sm:w-auto ml-3`}> */}
+							{/* 		<Link href="/signup" className=""> */}
+							{/* 			<span>Sign up</span> */}
+							{/* 		</Link> */}
+							{/* 	</Button> */}
+							{/* </li> */}
 						</ul>
 
 					</nav>
 
-					<MobileMenu />
+					{/* <MobileMenu /> */}
 
 				</div>
 			</div>
