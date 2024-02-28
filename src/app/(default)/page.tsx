@@ -1,6 +1,6 @@
 export const metadata = {
-	title: 'Home - Simple',
-	description: 'Page description',
+	title: 'BookLinkr',
+	description: 'Cultivate your love for reading with BookLinkr - the ultimate platform for sharing and discovering your favorite books. Easily curate your personalized digital bookshelf and share it with friends, family, and fellow book enthusiasts. Join our vibrant community, explore curated book recommendations, and connect with like-minded readers.',
 }
 
 import Hero from '@/components/hero'
