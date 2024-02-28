@@ -61,11 +61,11 @@ export default function Hero() {
 							</div>
 
 							<div className="max-w-xs mx-auto sm:max-w-none sm:flex sm:justify-center" data-aos="zoom-y-out" data-aos-delay="300">
-								<Button className={`text-2xl ${maely.className} w-full mb-4 sm:w-auto sm:mb-0`}>
-									<Link href={site.formLink} target='_blank'>
-									 Join waiting list
-									</Link>
-								</Button>
+								<Link href={site.formLink} target='_blank'>
+									<Button className={`text-2xl ${maely.className} w-full mb-4 sm:w-auto sm:mb-0`}>
+										Join waiting list
+									</Button>
+								</Link>
 								{/* <Button className={`text-2xl ${maely.className} w-full sm:w-auto sm:ml-4`}> */}
 								{/* 	Learn More */}
 								{/* </Button> */}

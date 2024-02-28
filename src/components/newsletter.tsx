@@ -52,11 +52,11 @@ export default function Newsletter() {
 								{/*     <a className="btn text-white bg-blue-600 hover:bg-blue-700 shadow" href="#0">Subscribe</a> */}
 								{/*   </div> */}
 								{/* </form> */}
-								<Button className={`text-2xl ${maely.className} w-full mb-4 sm:w-auto sm:mb-0 bg-lightbrown text-darkgreen`}>
-									<Link href={site.formLink} target="_blank">
+								<Link href={site.formLink} target="_blank">
+									<Button className={`text-2xl ${maely.className} w-full mb-4 sm:w-auto sm:mb-0 bg-lightbrown text-darkgreen`}>
 										Join waiting list
-									</Link>
-								</Button>
+									</Button>
+								</Link>
 
 							</div>
 
