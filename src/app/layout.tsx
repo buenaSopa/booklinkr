@@ -21,7 +21,7 @@ export const metadata = {
 	openGraph: {
 		images: [
 			{
-				url: ogImage.src:
+				url: ogImage.src,
 				width: ogImage.width,
 				height: ogImage.height
 			},
