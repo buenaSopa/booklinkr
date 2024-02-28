@@ -62,7 +62,7 @@ export default function Hero() {
 
 							<div className="max-w-xs mx-auto sm:max-w-none sm:flex sm:justify-center" data-aos="zoom-y-out" data-aos-delay="300">
 								<Button className={`text-2xl ${maely.className} w-full mb-4 sm:w-auto sm:mb-0`}>
-									<Link href={site.formLink}>
+									<Link href={site.formLink} target='_blank'>
 									 Join waiting list
 									</Link>
 								</Button>

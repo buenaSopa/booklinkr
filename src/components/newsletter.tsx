@@ -53,7 +53,7 @@ export default function Newsletter() {
 								{/*   </div> */}
 								{/* </form> */}
 								<Button className={`text-2xl ${maely.className} w-full mb-4 sm:w-auto sm:mb-0 bg-lightbrown text-darkgreen`}>
-									<Link href={site.formLink}>
+									<Link href={site.formLink} target="_blank">
 										Join waiting list
 									</Link>
 								</Button>
