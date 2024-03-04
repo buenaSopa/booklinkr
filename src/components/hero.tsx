@@ -7,7 +7,7 @@ import Image from 'next/image'
 import { site } from '@/config/site'
 import Link from 'next/link'
 
-export default function Hero() {
+export default async function Hero() {
 	return (
 		<section className="relative">
 
