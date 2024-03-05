@@ -51,11 +51,21 @@ export default function Header() {
 							{/* 	</Button> */}
 							{/* </li> */}
 							<li>
+							{!session ? (
 								<Link href="/api/auth/signin" className="transition duration-150 ease-in-out">
 									<Button className={`text-lg ${maely.className} w-full sm:w-auto`}>
 										Sign in
 									</Button>
 								</Link>
+								) : (
+								<Link href="/api/auth/signout" className="transition duration-150 ease-in-out">
+									<Button className={`text-lg ${maely.className} w-full sm:w-auto`}>
+										Sign Out
+									</Button>
+								</Link>
+
+								)
+							}
 
 							</li>
 							{/* <li> */}
