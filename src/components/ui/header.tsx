@@ -9,6 +9,7 @@ import MobileMenu from './mobile-menu'
 import { maely } from '@/lib/fonts'
 import { site } from '@/config/site'
 import { Button } from './button'
+import { useSession } from "next-auth/react"
 
 export default function Header() {
 
@@ -24,6 +25,8 @@ export default function Header() {
 		window.addEventListener('scroll', scrollHandler)
 		return () => window.removeEventListener('scroll', scrollHandler)
 	}, [top])
+
+	const { data: session, status } = useSession()
 
 	return (
 		<header className={`fixed w-full z-30 md:bg-opacity-90 transition duration-300 ease-in-out ${!top ? 'bg-white backdrop-blur-sm shadow-lg' : ''}`}>

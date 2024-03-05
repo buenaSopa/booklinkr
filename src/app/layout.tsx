@@ -7,6 +7,8 @@ import Banner from '@/components/banner'
 import { brush } from '@/lib/fonts'
 import { GoogleAnalytics } from '@next/third-parties/google'
 import ogImage from "@/../public/images/opengraph-image.png"
+import { auth } from '@/auth'
+import SessionProvider from '@/components/SessionProvider'
 
 const inter = Inter({
 	subsets: ['latin'],
@@ -38,19 +40,23 @@ export const metadata = {
 	},
 }
 
-export default function RootLayout({
+export default async function RootLayout({
 	children,
 }: {
 	children: React.ReactNode
 }) {
+	const session = await auth()
 	return (
 		<html lang="en">
 			<body className={`${brush.className} antialiased bg-lightbrown text-darkgreen tracking-tight`}>
-				<div className="flex flex-col min-h-screen overflow-hidden supports-[overflow:clip]:overflow-clip">
-					<Header />
-					{children}
-					{/* <Banner /> */}
-				</div>
+				<SessionProvider session={session}>
+					<div className="flex flex-col min-h-screen overflow-hidden supports-[overflow:clip]:overflow-clip">
+						<Header />
+						{JSON.stringify(session)}
+						{children}
+						{/* <Banner /> */}
+					</div>
+				</SessionProvider>
 			</body>
 			<GoogleAnalytics gaId='G-Y3ERXF2YTE' />
 		</html>
