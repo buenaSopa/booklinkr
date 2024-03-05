@@ -63,7 +63,6 @@ export default function Header() {
 										Sign Out
 									</Button>
 								</Link>
-
 								)
 							}
 
