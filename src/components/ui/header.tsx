@@ -42,17 +42,19 @@ export default function Header() {
 					<nav className="hidden md:flex md:grow">
 						{/* Desktop sign in links */}
 						<ul className="flex grow justify-end flex-wrap items-center">
-							<li>
-								<Button className={`text-lg ${maely.className} w-full sm:w-auto`}>
-									Coming Soon
-								</Button>
-							</li>
 							{/* <li> */}
 							{/* 	<Button className={`text-lg ${maely.className} w-full sm:w-auto`}> */}
-							{/* 		<Link href="/signin" className="transition duration-150 ease-in-out">Sign in</Link> */}
+							{/* 		Coming Soon */}
 							{/* 	</Button> */}
-
 							{/* </li> */}
+							<li>
+								<Link href="/api/auth/signin" className="transition duration-150 ease-in-out">
+									<Button className={`text-lg ${maely.className} w-full sm:w-auto`}>
+										Sign in
+									</Button>
+								</Link>
+
+							</li>
 							{/* <li> */}
 							{/* 	<Button className={`text-lg ${maely.className} w-full sm:w-auto ml-3`}> */}
 							{/* 		<Link href="/signup" className=""> */}
@@ -64,7 +66,7 @@ export default function Header() {
 
 					</nav>
 
-					{/* <MobileMenu /> */}
+					<MobileMenu />
 
 				</div>
 			</div>

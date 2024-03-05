@@ -1,4 +1,4 @@
 export const site = {
-	name: "Booklinkr.alpha",
+	name: "Booklinkr",
 	formLink: "https://tally.so/r/3y97O4",
 }
