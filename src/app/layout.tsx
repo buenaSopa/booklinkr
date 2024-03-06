@@ -10,6 +10,7 @@ import ogImage from "@/../public/images/opengraph-image.png"
 import { auth } from '@/auth'
 import SessionProvider from '@/components/SessionProvider'
 import { AOSInit } from '@/lib/aos'
+import { Toaster } from "@/components/ui/toaster"
 
 const inter = Inter({
 	subsets: ['latin'],
@@ -57,6 +58,7 @@ export default async function RootLayout({
 						{children}
 						{/* <Banner /> */}
 					</div>
+					<Toaster />
 				</SessionProvider>
 			</body>
 			<GoogleAnalytics gaId='G-Y3ERXF2YTE' />
