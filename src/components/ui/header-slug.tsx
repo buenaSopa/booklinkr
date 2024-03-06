@@ -19,6 +19,7 @@ export default function HeaderSlug({ shelf }: { shelf: string }) {
 						onCopy={() => {
 							toast({
 								duration: 3000,
+								className: "text-2xl",
 								description: "bookshelf copied",
 							})
 						}}>
