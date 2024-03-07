@@ -16,9 +16,9 @@ import {
 	CommandSeparator,
 	CommandShortcut,
 } from "@/components/ui/command"
+import { useDebouncedCallback } from 'use-debounce'
 
-
-const books = [
+export const dog = [
 	{
 		"title": "The Secret Garden",
 		"author": "Frances Hodgson Burnett",
@@ -62,7 +62,6 @@ const books = [
 ]
 
 export default function AddButton() {
-	const router = useRouter()
 	const [open, setOpen] = useState(false)
 
 	const runCommand = useCallback((command: () => unknown) => {
@@ -85,7 +84,7 @@ export default function AddButton() {
 				<CommandInput placeholder="Search for a book" />
 				<CommandList>
 					<CommandEmpty>No results found.</CommandEmpty>
-					{books.map((navItem) => (
+					{dog.map((navItem) => (
 						<CommandItem
 							key={navItem.isbn}
 							value={navItem.title}
