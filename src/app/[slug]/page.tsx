@@ -52,16 +52,14 @@ async function formatSearch(jsonData: any[]): Promise<Book[]> {
 
 	for (const item of jsonData) {
 		const cover = await fetchCover(item.cover_edition_key);
-		const desc = await fetchDescription(item.key);
-
-		console.log("sj", cover)
+		// const desc = await fetchDescription(item.key);
 
 		const beautifiedItem: Book = {
 			key: item.key || '',
 			title: item.title || '',
 			author_name: (item.author_name && item.author_name.length > 0) ? item.author_name[0] : '',
 			cover: cover,
-			desc: desc
+			// desc: desc
 		};
 		beautifiedData.push(beautifiedItem);
 	}
@@ -71,21 +69,30 @@ async function formatSearch(jsonData: any[]): Promise<Book[]> {
 
 export default function Page({ params }: { params: { slug: string } }) {
 	const [book, setBooks] = useState<ComboBoxItemType[]>([])
+	const [loading, setLoading] = useState(false)
 
 	const handleBookSearchChanged = async (value: string) => {
-		console.log(transformString(value))
-		const response = await fetch(`https://openlibrary.org/search.json?title=${transformString(value)}&limit=5&fields=author_name,cover_edition_key,title,key`)
-		const json = await response.json()
+		setLoading(true)
+		try {
+			console.log(transformString(value))
+			const response = await fetch(`https://openlibrary.org/search.json?title=${transformString(value)}&limit=5&fields=author_name,cover_edition_key,title,key`)
+			const json = await response.json()
 
-		const searchResult = await formatSearch(json.docs)
+			const searchResult = await formatSearch(json.docs)
 
-		console.log(searchResult)
-		// setBooks(
-		// 	response.map(book => ({
-		// 		value: book.title,
-		// 		label: book.title
-		// 	})) || []
-		// )
+			console.log(searchResult)
+			setBooks(
+				searchResult.map(book => ({
+					value: book.key,
+					label: book.title + (book.author_name ? " - " + book.author_name : ""),
+					url: book.cover
+				})) || []
+			)
+		} catch (error) {
+			console.error(error)
+		} finally {
+			setLoading(false)
+		}
 	}
 
 	return (
@@ -93,6 +100,7 @@ export default function Page({ params }: { params: { slug: string } }) {
 			<HeaderSlug shelf={params.slug} />
 			<Combobox
 				className='w-full'
+				loading={loading}
 				items={book}
 				onSelect={value => console.log(value)}
 				onSearchChange={handleBookSearchChanged}

@@ -17,9 +17,11 @@ import {
 	PopoverTrigger
 } from '@/components/ui/popover'
 import { ScrollArea } from './ui/scroll-area'
+import Image from 'next/image'
 
 export type ComboBoxItemType = {
 	value: string
+	url?: string
 	label: string
 }
 
@@ -33,6 +35,7 @@ type ComboboxProps = {
 	className?: string
 	unselect?: boolean
 	unselectMsg?: string
+	loading: boolean
 	onSearchChange?: (e: string) => void
 }
 
@@ -50,6 +53,7 @@ export function Combobox({
 	className,
 	unselect = false,
 	unselectMsg = 'None',
+	loading = false,
 	onSearchChange
 }: ComboboxProps) {
 	const [open, setOpen] = React.useState(false)
@@ -82,12 +86,26 @@ export function Combobox({
 			>
 				<Command>
 					<CommandInput
-					className='text-xl'
+						className='text-xl'
 						placeholder={searchPlaceholder}
 						onValueChange={handleOnSearchChange}
 					/>
 					<ScrollArea className='max-h-[220px] overflow-auto'>
-						<CommandEmpty>{noResultsMsg}</CommandEmpty>
+						<CommandEmpty >
+							{
+								!loading ? noResultsMsg :
+									<div className='flex flex-col gap-2'>
+										<div
+											className="inline-block mx-auto h-6 w-6 animate-spin rounded-full border-4 border-solid border-darkgreen border-r-transparent align-[-0.125em] motion-reduce:animate-[spin_1.5s_linear_infinite]"
+											role="status">
+											<span
+												className="!absolute !-m-px !h-px !w-px !overflow-hidden !whitespace-nowrap !border-0 !p-0 ![clip:rect(0,0,0,0)]"
+											>Loading...</span>
+										</div>
+										Pls wait while Lapin is fetching the books
+									</div>
+							}
+						</CommandEmpty>
 						<CommandGroup>
 							{unselect && (
 								<CommandItem
@@ -127,12 +145,15 @@ export function Combobox({
 										)}
 									/>
 									{item.label}
+									<div className='relative h-[50px] w-[35px] ml-5' data-aos="zoom-y-out" data-aos-delay="250">
+										<Image src={item.url} fill alt='cover' />
+									</div>
 								</CommandItem>
 							))}
 						</CommandGroup>
 					</ScrollArea>
 				</Command>
 			</PopoverContent>
-		</Popover>
+		</Popover >
 	)
 }

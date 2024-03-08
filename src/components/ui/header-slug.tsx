@@ -15,7 +15,7 @@ export default function HeaderSlug({ shelf }: { shelf: string }) {
 		<>
 			<div className="flex bg-darkgreen text-lightbrown justify-between sm:px-10 py-3 items-center px-2">
 				<div>
-					<CopyToClipboard text={`https://www.booklinkr.com/${shelf}`}
+					<CopyToClipboard text={`booklinkr.com/${shelf}`}
 						onCopy={() => {
 							toast({
 								duration: 3000,
