@@ -6,8 +6,14 @@ import { Button } from './ui/button'
 import Image from 'next/image'
 import { site } from '@/config/site'
 import Link from 'next/link'
+import { auth } from '@/auth'
+import { useEffect } from 'react'
+import { checkBookshelfExist } from '@/action/db'
 
 export default async function Hero() {
+
+	const session = await auth()
+
 	return (
 		<section className="relative">
 
@@ -61,11 +67,33 @@ export default async function Hero() {
 							</div>
 
 							<div className="max-w-xs mx-auto sm:max-w-none sm:flex sm:justify-center" data-aos="zoom-y-out" data-aos-delay="300">
-								<Link href={site.formLink} target='_blank'>
-									<Button className={`text-2xl ${maely.className} w-full mb-4 sm:w-auto sm:mb-0`}>
-										Join waiting list
-									</Button>
-								</Link>
+								{/* <Link href={site.formLink} target='_blank'> */}
+								{/* 	<Button className={`text-2xl ${maely.className} w-full mb-4 sm:w-auto sm:mb-0`}> */}
+								{/* 		Join waiting list */}
+								{/* 	</Button> */}
+								{/* </Link> */}
+								{
+									!session ? (
+										<Link href='/api/auth/signin'>
+											<Button className={`text-2xl ${maely.className} w-full mb-4 sm:w-auto sm:mb-0`}>
+												Sign In
+											</Button>
+										</Link>) : (await checkBookshelfExist(session.user?.id) ? (
+											<Link href='/api/auth/signin'>
+												<Button className={`text-2xl ${maely.className} w-full mb-4 sm:w-auto sm:mb-0`}>
+													 Go to your page
+												</Button>
+											</Link>
+										) : (
+											<Link href='/api/auth/signin'>
+												<Button className={`text-2xl ${maely.className} w-full mb-4 sm:w-auto sm:mb-0`}>
+													 create bookshelf
+												</Button>
+											</Link>
+										)
+									)
+								}
+
 								{/* <Button className={`text-2xl ${maely.className} w-full sm:w-auto sm:ml-4`}> */}
 								{/* 	Learn More */}
 								{/* </Button> */}
@@ -85,7 +113,7 @@ export default async function Hero() {
 
 				</div>
 
-			</div>
-		</section>
+			</div >
+		</section >
 	)
 }
