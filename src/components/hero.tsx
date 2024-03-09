@@ -34,28 +34,28 @@ export default async function Hero() {
 				<div className="pt-32 pb-12 md:pt-32 md:pb-20">
 
 					{/* Section header */}
-					<div className={`text-center pb-12 md:pb-16 ${maely.className}`}>
-						<h1 className="text-5xl md:text-6xl  leading-tighter tracking-tighter mb-4" data-aos="zoom-y-out">
+					<div className={`text-center pb-12 md:pb-16 ${brush.className}`}>
+						<h1 className="text-3xl md:text-3xl leading-tighter tracking-tighter mb-4 font-thin" data-aos="zoom-y-out">
 							<Balancer>
-								Share your recommended<br /> reads with
-								{/* ONE LINK */}
-								<span className="text-darkbrown"> Booklinkr</span>
+								With
+								<span className='text-darkbrown'> Booklinkr</span>
+								, you can compile all your favorite books into
+								<span className='text-darkbrown'> one convenient link</span>
+								, making it simple to share your reading recommendations with friends, family, and fellow book lovers.
 							</Balancer>
 
 						</h1>
 						<div className="max-w-3xl mx-auto">
-							<p className={`text-xl text-gray-600 mb-8 ${brush.className}`} data-aos="zoom-y-out" data-aos-delay="150">
-								<Balancer>
-									With
-									<span className='text-darkbrown'> Booklinkr</span>
-									, you can compile all your favorite books into one convenient link, making it simple to share your reading recommendations with friends, family, and fellow book lovers.
-								</Balancer>
+							<p className={`text-xl text-gray-600 mb-8 ${maely.className}`} data-aos="zoom-y-out" data-aos-delay="150">
+								Share your recommended reads with
+								{/* ONE LINK */}
+								<span className="text-darkbrown"> Booklinkr</span>
 							</p>
 
 
 							<div className={`mx-auto w-fit mb-8 ${brush.className}`} data-aos="zoom-y-out" data-aos-delay="200">
 								<div className='relative h-[175px] w-[120px]' data-aos="zoom-y-out" data-aos-delay="250">
-									<Image src={"/images/lapin-green.png"} fill alt='rabbit' />
+									<Image src={"/images/lapin-green.png"} fill alt='cover' />
 								</div>
 								Lapin the Librarian
 							</div>

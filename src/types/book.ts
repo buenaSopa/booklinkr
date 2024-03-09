@@ -3,5 +3,4 @@ export type Book = {
 	title: string;
 	author_name?: string,
 	cover?: string
-	desc?: string
 }

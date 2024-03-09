@@ -23,11 +23,12 @@ export type ComboBoxItemType = {
 	value: string
 	url?: string
 	label: string
+	book : Book
 }
 
 type ComboboxProps = {
 	value?: string
-	onSelect: (value: string | undefined) => void
+	onSelect: (value: Book) => void
 	items: ComboBoxItemType[]
 	searchPlaceholder?: string
 	noResultsMsg?: string
@@ -49,7 +50,7 @@ export function Combobox({
 	items,
 	searchPlaceholder = 'Book Name',
 	noResultsMsg = 'No Result',
-	selectItemMsg = 'Add a book',
+	selectItemMsg = 'Search Book Name',
 	className,
 	unselect = false,
 	unselectMsg = 'None',
@@ -90,7 +91,7 @@ export function Combobox({
 						placeholder={searchPlaceholder}
 						onValueChange={handleOnSearchChange}
 					/>
-					<ScrollArea className='max-h-[220px] overflow-auto'>
+					<ScrollArea className='max-h-[420px] overflow-auto'>
 						<CommandEmpty >
 							{
 								!loading ? noResultsMsg :
@@ -132,7 +133,7 @@ export function Combobox({
 									onSelect={currentValue => {
 										onSelect(
 											currentValue === item.label.toLowerCase()
-												? item.value
+												? item.book
 												: ''
 										)
 										setOpen(false)

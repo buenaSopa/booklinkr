@@ -1,5 +1,6 @@
 "use client"
 
+import BookCard from "@/components/bookCard"
 import { ComboBoxItemType, Combobox } from "@/components/comboBox"
 import { Button } from "@/components/ui/button"
 import Header from "@/components/ui/header"
@@ -67,9 +68,29 @@ async function formatSearch(jsonData: any[]): Promise<Book[]> {
 	return beautifiedData;
 }
 
+
+const books = [
+	{
+		cover: 'https://covers.openlibrary.org/b/olid/OL12345678M-M.jpg',
+		title: 'Example Book Title',
+		author: 'John Doe'
+	},
+	{
+		cover: 'https://covers.openlibrary.org/b/olid/OL12345679M-M.jpg',
+		title: 'Example Book Title',
+		author: 'Jane Smith'
+	},
+	// Add more book objects as needed
+];
+
 export default function Page({ params }: { params: { slug: string } }) {
 	const [book, setBooks] = useState<ComboBoxItemType[]>([])
 	const [loading, setLoading] = useState(false)
+
+	const addToBookshelf = async (book: Book) => {
+		// server action check if book is in db, if book is in db, is duplicate, else just add inside
+		console.log("added to bookshelf ", book)
+	}
 
 	const handleBookSearchChanged = async (value: string) => {
 		setLoading(true)
@@ -85,7 +106,8 @@ export default function Page({ params }: { params: { slug: string } }) {
 				searchResult.map(book => ({
 					value: book.key,
 					label: book.title + (book.author_name ? " - " + book.author_name : ""),
-					url: book.cover
+					url: book.cover,
+					book: book
 				})) || []
 			)
 		} catch (error) {
@@ -102,13 +124,16 @@ export default function Page({ params }: { params: { slug: string } }) {
 				className='w-full'
 				loading={loading}
 				items={book}
-				onSelect={value => console.log(value)}
+				onSelect={value => {
+					// console.log(value)
+					addToBookshelf(value)
+				}}
 				onSearchChange={handleBookSearchChanged}
 			/>
-			<div>
-				<pre>
-
-				</pre>
+			<div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4 p-4">
+				{books.map((book, index) => (
+					<BookCard key={index} cover={book.cover} title={book.title} author={book.author} />
+				))}
 			</div>
 		</section>
 	)
