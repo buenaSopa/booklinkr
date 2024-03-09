@@ -8,11 +8,13 @@ import { site } from '@/config/site'
 import Link from 'next/link'
 import { auth } from '@/auth'
 import { useEffect } from 'react'
-import { checkBookshelfExist } from '@/action/db'
+import { checkBookshelfExist, getUserSlug } from '@/action/db'
+import { CreateBookshelf } from './createBookshelfForm'
 
 export default async function Hero() {
 
 	const session = await auth()
+	const user_slug = await getUserSlug(session?.user?.id)
 
 	return (
 		<section className="relative">
@@ -79,17 +81,15 @@ export default async function Hero() {
 												Sign In
 											</Button>
 										</Link>) : (await checkBookshelfExist(session.user?.id) ? (
-											<Link href='/api/auth/signin'>
+											<Link href={`/${user_slug}`}>
 												<Button className={`text-2xl ${maely.className} w-full mb-4 sm:w-auto sm:mb-0`}>
-													 Go to your page
+													Go to your page
 												</Button>
 											</Link>
 										) : (
-											<Link href='/api/auth/signin'>
-												<Button className={`text-2xl ${maely.className} w-full mb-4 sm:w-auto sm:mb-0`}>
-													 create bookshelf
-												</Button>
-											</Link>
+											<div className='md:w-1/2'>
+												<CreateBookshelf userId={session.user?.id} />
+											</div>
 										)
 									)
 								}

@@ -1,0 +1,90 @@
+"use client"
+
+import { zodResolver } from "@hookform/resolvers/zod"
+import { useForm } from "react-hook-form"
+import { z } from "zod"
+import { useState, useTransition } from 'react'
+import { useRouter } from 'next/navigation';;
+
+import { Button } from "@/components/ui/button"
+import {
+	Form,
+	FormControl,
+	FormDescription,
+	FormField,
+	FormItem,
+	FormLabel,
+	FormMessage,
+} from "@/components/ui/form"
+import { Input } from "@/components/ui/input"
+import { createBookshelf } from "@/action/db"
+
+const slugSchema = z
+	.string()
+	.trim() // Remove leading/trailing whitespace
+	.regex(/^[a-z0-9]+(-[a-z0-9]+)*$/, {
+		message: "Link can only contain lowercase letters, numbers, and hyphens in between",
+	}).min(1, {
+		message: "Link must be at least 1 characters.",
+	}).max(17, {
+		message: "Link must be within 17 characters"
+	});
+
+const formSchema = z.object({
+	slug: slugSchema
+})
+
+export function CreateBookshelf({ userId }: { userId: string }) {
+	const router = useRouter();
+	const [isPending, startTransition] = useTransition();
+
+	// 1. Define your form.
+	const form = useForm<z.infer<typeof formSchema>>({
+		resolver: zodResolver(formSchema),
+		defaultValues: {
+			slug: "",
+		},
+	})
+
+	// 2. Define a submit handler.
+	async function onSubmit(values: z.infer<typeof formSchema>) {
+		// Do something with the form values.
+		// ✅ This will be type-safe and validated.
+		try {
+			const res = await createBookshelf(values.slug, userId)
+			console.log("success")
+		} catch (err) {
+			console.log(err)
+			console.log("fail, maybe taken")
+		} finally {
+			startTransition(() => {
+				// Refresh the current route and fetch new data from the server without
+				// losing client-side browser or React state.
+				router.refresh();
+			});
+		}
+	}
+
+	return (
+		<Form {...form}>
+			<form onSubmit={form.handleSubmit(onSubmit)} className="flex gap-1" >
+				<FormField
+					control={form.control}
+					name="slug"
+					render={({ field }) => (
+						<FormItem className="grow">
+							<FormControl>
+								<Input placeholder="Create your bookshelf link" {...field} />
+							</FormControl>
+							<FormMessage />
+							<FormDescription>
+								ex. lapin-the-rabit
+							</FormDescription>
+						</FormItem>
+					)}
+				/>
+				<Button type="submit">Submit</Button>
+			</form>
+		</Form>
+	)
+}

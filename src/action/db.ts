@@ -19,7 +19,18 @@ export async function checkBookshelfExist(userId: string) {
 		where: eq(bookshelf.id, userId)
 	})
 
-
 	return result
 }
 
+export async function createBookshelf(slug: string, userId: string) {
+	const res = await db.insert(bookshelf).values({ slug: slug, id: userId }).returning()
+	return res
+}
+
+export async function getUserSlug(userId: string) {
+	const res = await db.query.bookshelf.findFirst({
+		where: eq(bookshelf.id, userId),
+	})
+
+	return res?.slug
+}
