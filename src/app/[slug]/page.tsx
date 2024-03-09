@@ -90,6 +90,7 @@ export default function Page({ params }: { params: { slug: string } }) {
 	const addToBookshelf = async (book: Book) => {
 		// server action check if book is in db, if book is in db, is duplicate, else just add inside
 		console.log("added to bookshelf ", book)
+		setBooks([])
 	}
 
 	const handleBookSearchChanged = async (value: string) => {
