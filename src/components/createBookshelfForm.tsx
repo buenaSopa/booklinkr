@@ -37,8 +37,8 @@ const formSchema = z.object({
 export function CreateBookshelf({ userId }: { userId: string }) {
 	const router = useRouter();
 	const [isPending, startTransition] = useTransition();
+	const [error, setError] = useState(false)
 
-	// 1. Define your form.
 	const form = useForm<z.infer<typeof formSchema>>({
 		resolver: zodResolver(formSchema),
 		defaultValues: {
@@ -52,39 +52,54 @@ export function CreateBookshelf({ userId }: { userId: string }) {
 		// ✅ This will be type-safe and validated.
 		try {
 			const res = await createBookshelf(values.slug, userId)
-			console.log("success")
+			if (!res) {
+				setError(true)
+			} else {
+				setError(false)
+				startTransition(() => {
+					// Refresh the current route and fetch new data from the server without
+					// losing client-side browser or React state.
+					router.refresh();
+				});
+			}
 		} catch (err) {
 			console.log(err)
-			console.log("fail, maybe taken")
 		} finally {
-			startTransition(() => {
-				// Refresh the current route and fetch new data from the server without
-				// losing client-side browser or React state.
-				router.refresh();
-			});
 		}
 	}
 
 	return (
-		<Form {...form}>
-			<form onSubmit={form.handleSubmit(onSubmit)} className="flex gap-1" >
-				<FormField
-					control={form.control}
-					name="slug"
-					render={({ field }) => (
-						<FormItem className="grow">
-							<FormControl>
-								<Input placeholder="Create your bookshelf link" {...field} />
-							</FormControl>
-							<FormMessage />
-							<FormDescription>
-								ex. lapin-the-rabit
-							</FormDescription>
-						</FormItem>
-					)}
-				/>
-				<Button type="submit">Submit</Button>
-			</form>
-		</Form>
+		<>
+			<Form {...form}>
+				<form onSubmit={form.handleSubmit(onSubmit)} className="flex gap-1" >
+					<FormField
+						control={form.control}
+						name="slug"
+						render={({ field }) => (
+							<FormItem className="grow">
+								<FormControl>
+									<Input placeholder="Create your bookshelf link" {...field} />
+								</FormControl>
+								<FormMessage />
+								<FormDescription>
+									{error ? (
+										<div className="text-red-500">
+											name taken, try again
+										</div>
+									) : (
+										<div>
+											ex. lapin-the-rabit
+										</div>
+									)}
+								</FormDescription>
+							</FormItem>
+						)}
+					/>
+					<Button type="submit">
+						Submit
+					</Button>
+				</form>
+			</Form>
+		</>
 	)
 }

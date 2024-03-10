@@ -10,7 +10,7 @@ export async function checkBookshelfExist(userId: string) {
 		const result = await db.query.bookshelf.findFirst({
 			where: eq(bookshelf.id, userId)
 		})
-		console.log(result)
+		// console.log(result)
 
 		return result
 	} catch (err) {
@@ -21,6 +21,16 @@ export async function checkBookshelfExist(userId: string) {
 
 export async function createBookshelf(slug: string, userId: string) {
 	try {
+		// check if slug name is take
+		const taken = await db.query.bookshelf.findFirst({
+			where: eq(bookshelf.slug, slug)
+		})
+
+		if (taken) {
+			return false
+		}
+
+		// create bookshelf
 		const res = await db.insert(bookshelf).values({ slug: slug, id: userId }).returning()
 		return true
 	} catch (err) {

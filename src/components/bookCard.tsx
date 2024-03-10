@@ -9,7 +9,7 @@ type BookProps = {
 
 const BookCard: React.FC<BookProps> = ({ cover, title, author }) => {
 	return (
-		<div className="max-w-xs w-full mx-auto bg-white shadow-lg rounded-lg overflow-hidden">
+		<div className="max-w-xs w-full mx-auto bg-white shadow-lg rounded-lg overflow-hidden" data-aos="zoom-y-out">
 			<div className={`h-60 bg-cover bg-center ${cover == "" ? 'bg-darkgreen' : 'bg-darkgreen'}`} style={{ backgroundImage: `url(${cover})` }}></div>
 			{/* <div className='relative h-[175px] w-[120px]'> */}
 			{/* 	<Image src={cover!} fill alt='rabbit'  className=''/> */}

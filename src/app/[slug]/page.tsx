@@ -121,7 +121,7 @@ export default function Page({ params }: { params: { slug: string } }) {
 					onSearchChange={handleBookSearchChanged}
 				/>
 			}
-			<div className="grid items-stretch grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4 p-4">
+			<div className="grid items-stretch grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4 p-4" >
 				{myBook.map((book, index) => (
 					<BookCard key={index} cover={book.cover} title={book.title} author={book.author_name} />
 				))}
