@@ -14,7 +14,7 @@ import { CreateBookshelf } from './createBookshelfForm'
 export default async function Hero() {
 
 	const session = await auth()
-	const user_slug = await getUserSlug(session?.user?.id)
+	const user_slug = await getUserSlug(session?.user?.id!)
 
 	return (
 		<section className="relative">
@@ -74,13 +74,14 @@ export default async function Hero() {
 								{/* 		Join waiting list */}
 								{/* 	</Button> */}
 								{/* </Link> */}
+
 								{
 									!session ? (
 										<Link href='/api/auth/signin'>
 											<Button className={`text-2xl ${maely.className} w-full mb-4 sm:w-auto sm:mb-0`}>
 												Sign In
 											</Button>
-										</Link>) : (await checkBookshelfExist(session.user?.id) ? (
+										</Link>) : (await checkBookshelfExist(session.user?.id!) ? (
 											<Link href={`/${user_slug}`}>
 												<Button className={`text-2xl ${maely.className} w-full mb-4 sm:w-auto sm:mb-0`}>
 													Go to your page
@@ -88,7 +89,7 @@ export default async function Hero() {
 											</Link>
 										) : (
 											<div className='md:w-1/2'>
-												<CreateBookshelf userId={session.user?.id} />
+												<CreateBookshelf userId={session.user?.id!} />
 											</div>
 										)
 									)
