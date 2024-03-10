@@ -4,8 +4,9 @@ import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
 import { useState } from "react";
 import { CopyToClipboard } from "react-copy-to-clipboard";
 import { Button } from "./button";
-import { IconCopy } from "@tabler/icons-react";
+import { IconCopy, IconHome } from "@tabler/icons-react";
 import { useToast } from "./use-toast";
+import Link from "next/link";
 
 export default function HeaderSlug({ shelf }: { shelf: string }) {
 	const { toast } = useToast()
@@ -30,10 +31,10 @@ export default function HeaderSlug({ shelf }: { shelf: string }) {
 					</CopyToClipboard>
 				</div>
 				<div>
-					<Avatar>
-						<AvatarImage src="https://github.com/shadcn.png" />
-						<AvatarFallback>CN</AvatarFallback>
-					</Avatar>
+					<Link
+						href={"/"}>
+						<IconHome className="w-7 h-7" />
+					</Link>
 				</div>
 			</div>
 		</>

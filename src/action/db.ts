@@ -44,13 +44,20 @@ export async function getUserSlug(userId: string) {
 
 export async function addBook(book_obj: Book, slug: string) {
 	try {
-		await db.insert(book).values({ title: book_obj.title, cover_url: book_obj.cover, author: book_obj.author_name, work_key: book_obj.key }).returning({ insertedId: book.work_key })
+		try {
+			await db.insert(book).values({ title: book_obj.title, cover_url: book_obj.cover, author: book_obj.author_name, work_key: book_obj.key })
+		} catch (err) {
+			console.log(err)
+			console.log("book probably already in db")
+		}
 
 		const bookshelf_obj = await db.query.bookshelf.findFirst({
 			where: eq(bookshelf.slug, slug)
 		})
+		console.log(bookshelf_obj)
 
-		const res = await db.insert(bookOnBookshelf).values({ book_id: book_obj.key, bookshelf_id: bookshelf_obj?.id! })
+		await db.insert(bookOnBookshelf).values({ book_id: book_obj.key, bookshelf_id: bookshelf_obj?.id! })
+
 		return true
 
 	} catch (e) {
