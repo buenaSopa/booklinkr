@@ -19,6 +19,21 @@ export async function checkBookshelfExist(userId: string) {
 	}
 }
 
+export async function checkBookshelfExistBySlug(slug: string) {
+	try {
+		const result = await db.query.bookshelf.findFirst({
+			where: eq(bookshelf.slug, slug)
+		})
+
+		console.log(result)
+		return result
+	} catch (err) {
+		console.log(err)
+		return false
+	}
+}
+
+
 export async function createBookshelf(slug: string, userId: string) {
 	try {
 		// check if slug name is take

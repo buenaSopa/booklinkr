@@ -1,6 +1,6 @@
 "use client"
 
-import { addBook, getBookByListOfBookId, getBookBySlug } from "@/action/db"
+import { addBook, checkBookshelfExistBySlug, getBookByListOfBookId, getBookBySlug } from "@/action/db"
 import BookCard from "@/components/bookCard"
 import { ComboBoxItemType, Combobox } from "@/components/comboBox"
 import HeaderSlug from "@/components/ui/header-slug"
@@ -59,9 +59,18 @@ export default function Page({ params }: { params: { slug: string } }) {
 	const [myBook, setMyBooks] = useState<Book[]>([])
 	const [loading, setLoading] = useState(false)
 	const session = useSession()
+	const [lib, setLib] = useState(true)
 
 	useEffect(() => {
 		(async () => {
+			// check if library exist
+			const exist = await checkBookshelfExistBySlug(params.slug)
+			if (!exist) {
+				setLib(false)
+				return null
+			}
+
+			// get book
 			const res = await getBookBySlug(params.slug)
 			console.log(res)
 			const listOfBookId = res.map(book => book.book_id)
@@ -121,11 +130,19 @@ export default function Page({ params }: { params: { slug: string } }) {
 					onSearchChange={handleBookSearchChanged}
 				/>
 			}
-			<div className="grid items-stretch grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4 p-4" >
-				{myBook.map((book, index) => (
-					<BookCard key={index} cover={book.cover} title={book.title} author={book.author_name} />
-				))}
-			</div>
+			{
+				lib ? (
+					<div className="grid items-stretch grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4 p-4" >
+						{myBook.map((book, index) => (
+							<BookCard key={index} cover={book.cover} title={book.title} author={book.author_name} />
+						))}
+					</div>
+				) : (
+					<div className="pt-40 text-center">
+							Bookshelf does not exist!!!
+					</div>
+				)
+			}
 		</section>
 	)
 }
