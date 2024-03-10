@@ -1,6 +1,6 @@
 "use client"
 
-import { addBook, checkBookshelfExistBySlug, getBookByListOfBookId, getBookBySlug } from "@/action/db"
+import { addBook, checkBookshelfExistBySlug, getBookByListOfBookId, getBookBySlug, getUserSlug } from "@/action/db"
 import BookCard from "@/components/bookCard"
 import { ComboBoxItemType, Combobox } from "@/components/comboBox"
 import HeaderSlug from "@/components/ui/header-slug"
@@ -60,9 +60,17 @@ export default function Page({ params }: { params: { slug: string } }) {
 	const [loading, setLoading] = useState(false)
 	const session = useSession()
 	const [lib, setLib] = useState(true)
+	const [authUserSlug, setAuthUserSlug] = useState("")
+	console.log(session)
 
 	useEffect(() => {
 		(async () => {
+			// get authed user slug to see if is his page for combobox visibility
+			if (session.status == "authenticated") {
+				// @ts-ignore
+				setAuthUserSlug(await getUserSlug(session.data.user?.id!))
+			}
+
 			// check if library exist
 			const exist = await checkBookshelfExistBySlug(params.slug)
 			if (!exist) {
@@ -119,6 +127,8 @@ export default function Page({ params }: { params: { slug: string } }) {
 			<HeaderSlug shelf={params.slug} />
 			{
 				session.status != "unauthenticated" &&
+				// check if params.slug == session.user.slug
+				(params.slug == authUserSlug) &&
 				<Combobox
 					className='w-full'
 					loading={loading}
@@ -139,7 +149,7 @@ export default function Page({ params }: { params: { slug: string } }) {
 					</div>
 				) : (
 					<div className="pt-40 text-center">
-							Bookshelf does not exist!!!
+						Bookshelf does not exist!!!
 					</div>
 				)
 			}

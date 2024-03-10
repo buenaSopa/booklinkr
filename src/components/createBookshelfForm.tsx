@@ -64,7 +64,6 @@ export function CreateBookshelf({ userId }: { userId: string }) {
 			}
 		} catch (err) {
 			console.log(err)
-		} finally {
 		}
 	}
 
