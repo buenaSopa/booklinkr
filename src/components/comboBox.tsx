@@ -24,7 +24,7 @@ export type ComboBoxItemType = {
 	value: string
 	url?: string
 	label: string
-	book : Book
+	book: Book
 }
 
 
@@ -105,7 +105,8 @@ export function Combobox({
 												className="!absolute !-m-px !h-px !w-px !overflow-hidden !whitespace-nowrap !border-0 !p-0 ![clip:rect(0,0,0,0)]"
 											>Loading...</span>
 										</div>
-										Pls wait while Lapin is fetching the books
+										Pls wait while Lapin is fetching the books<br />
+										Might take awhile :)
 									</div>
 							}
 						</CommandEmpty>

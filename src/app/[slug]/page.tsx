@@ -6,7 +6,6 @@ import { ComboBoxItemType, Combobox } from "@/components/comboBox"
 import HeaderSlug from "@/components/ui/header-slug"
 import { Book, mapToBook } from "@/types/book"
 import { useSession } from "next-auth/react"
-import { useRouter } from "next/navigation"
 import { useEffect, useState, useTransition } from "react";
 
 
@@ -61,7 +60,7 @@ export default function Page({ params }: { params: { slug: string } }) {
 	const session = useSession()
 	const [lib, setLib] = useState(true)
 	const [authUserSlug, setAuthUserSlug] = useState("")
-	console.log(session)
+	// console.log(session)
 
 	useEffect(() => {
 		(async () => {
@@ -145,7 +144,7 @@ export default function Page({ params }: { params: { slug: string } }) {
 				lib ? (
 					<div className="grid items-stretch grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4 p-4" >
 						{myBook.map((book, index) => (
-							<BookCard key={index} cover={book.cover} title={book.title} author={book.author_name} />
+							<BookCard key={index} book={book} myBooks={myBook} setMyBooks={setMyBooks} isUserBookshelf={session.status != "unauthenticated" && (params.slug == authUserSlug)} />
 						))}
 					</div>
 				) : (

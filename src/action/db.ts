@@ -1,7 +1,7 @@
 "use server"
 
 import { db } from "@/db"
-import { eq } from "drizzle-orm"
+import { and, eq } from "drizzle-orm"
 import { bookshelf, book, bookOnBookshelf } from "@/db/schema"
 import { Book, mapToBook } from "@/types/book"
 
@@ -90,6 +90,20 @@ export async function addBook(book_obj: Book, slug: string) {
 		return false
 	}
 
+}
+
+export async function removeBookByKeyAndBookshelfId(key: string, bookshelfId: string) {
+	console.log(key, bookshelfId)
+	try {
+		await db.delete(bookOnBookshelf).where(
+			and(eq(bookOnBookshelf.book_id, key), eq(bookOnBookshelf.bookshelf_id, bookshelfId))
+		)
+		return true
+
+	} catch (err) {
+		console.log(err)
+		return false
+	}
 }
 
 
