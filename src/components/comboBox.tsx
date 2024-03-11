@@ -119,7 +119,7 @@ export function Combobox({
 										onSelect(
 											currentValue === item.label.toLowerCase()
 												? item.book
-												: ''
+												: item.book
 										)
 										setOpen(false)
 									}}
@@ -132,7 +132,7 @@ export function Combobox({
 									/>
 									{item.label}
 									<div className='relative h-[50px] w-[35px] ml-5' data-aos="zoom-y-out" data-aos-delay="250">
-										<Image src={item.url} fill alt='cover' />
+										<Image src={item.url!} fill alt='cover' />
 									</div>
 								</CommandItem>
 							))}
