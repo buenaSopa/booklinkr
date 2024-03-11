@@ -29,7 +29,7 @@ const BookCard: React.FC<BookProps> = ({ book, myBooks, setMyBooks, isUserBooksh
 
 	const handleRemoveButton = async (key: string) => {
 		console.log(session.data?.user?.id, key)
-		const res = await removeBookByKeyAndBookshelfId(key, session.data?.user?.id)
+		const res = await removeBookByKeyAndBookshelfId(key, session.data?.user?.id!)
 		console.log(res && "successfully remove")
 		setMyBooks((state) => state.filter((item) => item.key !== book.key))
 
