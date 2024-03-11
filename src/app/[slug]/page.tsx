@@ -102,7 +102,8 @@ export default function Page({ params }: { params: { slug: string } }) {
 		setLoading(true)
 		try {
 			console.log(transformString(value))
-			const response = await fetch(`https://openlibrary.org/search.json?title=${transformString(value)}&limit=5&fields=author_name,cover_edition_key,title,key`)
+			// const response = await fetch(`https://openlibrary.org/search.json?title=${transformString(value)}&limit=5&fields=author_name,cover_edition_key,title,key`)
+			const response = await fetch(`https://openlibrary.org/search.json?q=${transformString(value)}&mode=everything&limit=5&fields=author_name,cover_edition_key,title,key`)
 			const json = await response.json()
 
 			const searchResult = await formatSearch(json.docs)

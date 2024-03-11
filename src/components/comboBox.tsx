@@ -18,6 +18,7 @@ import {
 } from '@/components/ui/popover'
 import { ScrollArea } from './ui/scroll-area'
 import Image from 'next/image'
+import { Book } from '@/types/book'
 
 export type ComboBoxItemType = {
 	value: string
@@ -25,6 +26,7 @@ export type ComboBoxItemType = {
 	label: string
 	book : Book
 }
+
 
 type ComboboxProps = {
 	value?: string
@@ -108,24 +110,6 @@ export function Combobox({
 							}
 						</CommandEmpty>
 						<CommandGroup>
-							{unselect && (
-								<CommandItem
-									key='unselect'
-									value=''
-									onSelect={() => {
-										onSelect('')
-										setOpen(false)
-									}}
-								>
-									<Check
-										className={cn(
-											'mr-2 h-4 w-4',
-											value === '' ? 'opacity-100' : 'opacity-0'
-										)}
-									/>
-									{unselectMsg}
-								</CommandItem>
-							)}
 							{items.map(item => (
 								<CommandItem
 									key={item.value}
