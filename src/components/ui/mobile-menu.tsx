@@ -76,6 +76,11 @@ export default function MobileMenu() {
 							)
 							}
 						</li>
+						<li className='text-center'>
+							<Link href={"https://twitter.com/officialbkyh"}>
+								Support: dm me on x
+							</Link>
+						</li>
 					</ul>
 				</Transition>
 			</div>
