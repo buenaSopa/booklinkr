@@ -32,7 +32,6 @@ const BookCard: React.FC<BookProps> = ({ book, myBooks, setMyBooks, isUserBooksh
 		const res = await removeBookByKeyAndBookshelfId(key, session.data?.user?.id!)
 		console.log(res && "successfully remove")
 		setMyBooks((state) => state.filter((item) => item.key !== book.key))
-
 		setOpen(false)
 	}
 

@@ -110,6 +110,7 @@ export function Combobox({
 									</div>
 							}
 						</CommandEmpty>
+
 						<CommandGroup>
 							{items.map(item => (
 								<CommandItem
@@ -137,6 +138,7 @@ export function Combobox({
 								</CommandItem>
 							))}
 						</CommandGroup>
+
 					</ScrollArea>
 				</Command>
 			</PopoverContent>

@@ -86,6 +86,17 @@ export default function Page({ params }: { params: { slug: string } }) {
 		})()
 	}, [])
 
+	function trimExtraSpaces(text: string): string {
+		// Remove leading and trailing whitespaces
+		text = text.trim();
+
+		// Split the string into words
+		const words = text.split(/\s+/);
+
+		// Join the words back with a single space between them
+		return words.join(" ");
+	}
+
 	const addToBookshelf = async (book: Book) => {
 		// server action check if book is in db, if book is in db, is duplicate, else just add inside
 		try {
@@ -106,11 +117,12 @@ export default function Page({ params }: { params: { slug: string } }) {
 			const json = await response.json()
 
 			const searchResult = await formatSearch(json.docs)
+			console.log(searchResult)
 
 			setBooks(
 				searchResult.map(book => ({
 					value: book.key,
-					label: book.title + (book.author_name ? " - " + book.author_name : ""),
+					label: trimExtraSpaces(book.title) + (book.author_name ? " - " + book.author_name : ""),
 					url: book.cover,
 					book: book
 				})) || []
