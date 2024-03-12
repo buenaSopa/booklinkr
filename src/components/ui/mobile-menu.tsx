@@ -4,6 +4,7 @@ import { useState, useRef, useEffect } from 'react'
 import { Transition } from '@headlessui/react'
 import { useSession } from "next-auth/react"
 import Link from 'next/link'
+import { Button } from './button'
 
 export default function MobileMenu() {
 	const [mobileNavOpen, setMobileNavOpen] = useState<boolean>(false)
@@ -36,7 +37,7 @@ export default function MobileMenu() {
 
 
 	return (
-		<div className="flex md:hidden">
+		<div className="flex">
 			{/* Hamburger button */}
 			<button
 				ref={trigger}
@@ -68,17 +69,38 @@ export default function MobileMenu() {
 					leaveTo="opacity-0"
 				>
 					<ul className="px-5 py-2">
-						<li>
+						<li className='text-center m-2'>
 							{!session ? (
-								<Link href="/api/auth/signin" className="flex font-medium w-full text-gray-600 hover:text-gray-900 py-2 justify-center" onClick={() => setMobileNavOpen(false)}>Sign in</Link>
+								<Button>
+									<Link href="/api/auth/signin" className="flex font-medium w-full py-2 justify-center"
+										onClick={() => setMobileNavOpen(false)}>
+										Sign in
+									</Link>
+								</Button>
 							) : (
-								<Link href="/api/auth/signout" className="flex font-medium w-full text-gray-600 hover:text-gray-900 py-2 justify-center" onClick={() => setMobileNavOpen(false)}>Sign out</Link>
+								<Button>
+									<Link href="/api/auth/signout" className="flex font-medium w-full py-2 justify-center"
+										onClick={() => setMobileNavOpen(false)}>
+										Sign out
+									</Link>
+								</Button>
 							)
 							}
 						</li>
-						<li className='text-center'>
+
+						<li className='text-center m-2'>
+							<Link href={"https://docs.google.com/document/d/1Uoi9QvFdPp3j6WkdDU3Xp4CbjdLkf8FYzDwCPx1ImYw/edit?usp=sharing"} target='_blank'>
+								<Button>
+									Product Roadmap
+								</Button>
+							</Link>
+						</li>
+
+						<li className='text-center m-2'>
 							<Link href={"https://twitter.com/officialbkyh"}>
-								Support: dm me on x
+								<Button>
+									Support: dm me on x
+								</Button>
 							</Link>
 						</li>
 					</ul>

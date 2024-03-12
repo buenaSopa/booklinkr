@@ -42,41 +42,29 @@ export default function Header() {
 					</div>
 
 					{/* Desktop navigation */}
-					<nav className="hidden md:flex md:grow">
+					{/* <nav className="hidden md:flex md:grow"> */}
 						{/* Desktop sign in links */}
-						<ul className="flex grow justify-end flex-wrap items-center">
-							{/* <li> */}
-							{/* 	<Button className={`text-lg ${maely.className} w-full sm:w-auto`}> */}
-							{/* 		Coming Soon */}
-							{/* 	</Button> */}
-							{/* </li> */}
-							<li>
-							{!session ? (
-								<Link href="/api/auth/signin" className="transition duration-150 ease-in-out">
-									<Button className={`text-lg ${maely.className} w-full sm:w-auto`}>
-										Sign in
-									</Button>
-								</Link>
-								) : (
-								<Link href="/api/auth/signout" className="transition duration-150 ease-in-out">
-									<Button className={`text-lg ${maely.className} w-full sm:w-auto`}>
-										Sign Out
-									</Button>
-								</Link>
-								)
-							}
+					{/* 	<ul className="flex grow justify-end flex-wrap items-center"> */}
+					{/* 		<li> */}
+					{/* 		{!session ? ( */}
+					{/* 			<Link href="/api/auth/signin" className="transition duration-150 ease-in-out"> */}
+					{/* 				<Button className={`text-lg ${maely.className} w-full sm:w-auto`}> */}
+					{/* 					Sign in */}
+					{/* 				</Button> */}
+					{/* 			</Link> */}
+					{/* 			) : ( */}
+					{/* 			<Link href="/api/auth/signout" className="transition duration-150 ease-in-out"> */}
+					{/* 				<Button className={`text-lg ${maely.className} w-full sm:w-auto`}> */}
+					{/* 					Sign Out */}
+					{/* 				</Button> */}
+					{/* 			</Link> */}
+					{/* 			) */}
+					{/* 		} */}
 
-							</li>
-							{/* <li> */}
-							{/* 	<Button className={`text-lg ${maely.className} w-full sm:w-auto ml-3`}> */}
-							{/* 		<Link href="/signup" className=""> */}
-							{/* 			<span>Sign up</span> */}
-							{/* 		</Link> */}
-							{/* 	</Button> */}
-							{/* </li> */}
-						</ul>
+					{/* 		</li> */}
+					{/* 	</ul> */}
 
-					</nav>
+					{/* </nav> */}
 
 					<MobileMenu />
 
