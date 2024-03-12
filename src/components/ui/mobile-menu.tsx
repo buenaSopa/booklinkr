@@ -69,34 +69,35 @@ export default function MobileMenu() {
 					leaveTo="opacity-0"
 				>
 					<ul className="px-5 py-2">
-						<li className='text-center m-2'>
+						<li className='text-center mb-2'>
 							{!session ? (
-								<Button>
-									<Link href="/api/auth/signin" className="flex font-medium w-full py-2 justify-center"
-										onClick={() => setMobileNavOpen(false)}>
+								<Link href="/api/auth/signin" className="flex font-medium w-full justify-center"
+									onClick={() => setMobileNavOpen(false)}>
+									<Button>
 										Sign in
-									</Link>
-								</Button>
+									</Button>
+								</Link>
 							) : (
-								<Button>
-									<Link href="/api/auth/signout" className="flex font-medium w-full py-2 justify-center"
-										onClick={() => setMobileNavOpen(false)}>
+								<Link href="/api/auth/signout" className="flex font-medium w-full justify-center"
+									onClick={() => setMobileNavOpen(false)}>
+									<Button>
 										Sign out
-									</Link>
-								</Button>
+									</Button>
+								</Link>
 							)
 							}
 						</li>
 
-						<li className='text-center m-2'>
-							<Link href={"https://docs.google.com/document/d/1Uoi9QvFdPp3j6WkdDU3Xp4CbjdLkf8FYzDwCPx1ImYw/edit?usp=sharing"} target='_blank'>
+						<li className='text-center mb-2'>
+							<Link href={"https://docs.google.com/document/d/1Uoi9QvFdPp3j6WkdDU3Xp4CbjdLkf8FYzDwCPx1ImYw/edit?usp=sharing"}
+								target='_blank'>
 								<Button>
 									Product Roadmap
 								</Button>
 							</Link>
 						</li>
 
-						<li className='text-center m-2'>
+						<li className='text-center mb-2'>
 							<Link href={"https://twitter.com/officialbkyh"}>
 								<Button>
 									Support: dm me on x
