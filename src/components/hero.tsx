@@ -1,6 +1,6 @@
 import VideoThumb from '@/../public/images/hero-image.png'
 import ModalVideo from '@/components/modal-video'
-import { brush, cavier, maely } from '@/lib/fonts'
+import { brush, cavier, maely, simple } from '@/lib/fonts'
 import Balancer from 'react-wrap-balancer'
 import { Button } from './ui/button'
 import Image from 'next/image'
@@ -25,7 +25,7 @@ export default async function Hero() {
 				<div className="pt-32 pb-12 md:pt-32 md:pb-20">
 
 					{/* Section header */}
-					<div className={`text-center pb-12 md:pb-16 ${brush.className}`}>
+					<div className={`text-center pb-12 md:pb-16 ${simple.className}`}>
 						<h1 className="text-3xl md:text-3xl leading-tighter tracking-tighter mb-4 font-thin" data-aos="zoom-y-out">
 							<Balancer>
 								With
@@ -44,7 +44,7 @@ export default async function Hero() {
 							</p>
 
 
-							<div className={`mx-auto w-fit mb-8 ${brush.className}`} data-aos="zoom-y-out" data-aos-delay="200">
+							<div className={`mx-auto w-fit mb-8 ${simple.className}`} data-aos="zoom-y-out" data-aos-delay="200">
 								<div className='relative h-[175px] w-[120px]' data-aos="zoom-y-out" data-aos-delay="250">
 									<Image src={"/images/lapin-green.png"} fill alt='cover' />
 								</div>

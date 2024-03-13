@@ -4,3 +4,4 @@ import localFont from 'next/font/local'
 export const maely = localFont({ src: '../../public/fonts/Maely.otf' })
 export const brush = localFont({ src: '../../public/fonts/Brushzing.otf' })
 export const cavier = localFont({ src: '../../public/fonts/CaviarDreams.ttf' })
+export const simple = localFont({ src: '../../public/fonts/simple.ttf' })

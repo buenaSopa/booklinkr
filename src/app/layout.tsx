@@ -4,7 +4,7 @@ import { Inter } from 'next/font/google'
 
 import Header from '@/components/ui/header'
 import Banner from '@/components/banner'
-import { brush } from '@/lib/fonts'
+import { brush, simple } from '@/lib/fonts'
 import { GoogleAnalytics } from '@next/third-parties/google'
 import ogImage from "@/../public/images/opengraph-image.png"
 import { auth } from '@/auth'
@@ -51,7 +51,7 @@ export default async function RootLayout({
 	return (
 		<html lang="en">
 			<AOSInit />
-			<body className={`${brush.className} antialiased bg-lightbrown text-darkgreen tracking-tight`}>
+			<body className={`${simple.className} antialiased bg-lightbrown text-darkgreen tracking-tight`}>
 				<SessionProvider session={session}>
 					<div className="flex flex-col min-h-screen overflow-hidden supports-[overflow:clip]:overflow-clip">
 						{/* {JSON.stringify(session)} */}
