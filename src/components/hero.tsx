@@ -65,7 +65,7 @@ export default async function Hero() {
 													Create Your Bookshelf	!!
 												</Button>
 											</Link>
-											<IconClick color='#FEFAE0' className='absolute bottom-1 right-1' />
+											<IconClick color='#FEFAE0' className='absolute bottom-1 right-1 sm:hidden' />
 										</div>
 									)
 										: (await checkBookshelfExist(session.user?.id!) ? (
@@ -75,7 +75,7 @@ export default async function Hero() {
 														Go to your page
 													</Button>
 												</Link>
-												<IconClick color='#FEFAE0' className='absolute bottom-1 right-1' />
+												<IconClick color='#FEFAE0' className='absolute bottom-1 right-1 sm:hidden' />
 											</div>
 										) : (
 											<div className='md:w-1/2'>
