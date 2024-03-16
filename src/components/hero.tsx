@@ -10,6 +10,7 @@ import { auth } from '@/auth'
 import { useEffect } from 'react'
 import { checkBookshelfExist, getUserSlug } from '@/action/db'
 import { CreateBookshelf } from './createBookshelfForm'
+import { IconClick } from '@tabler/icons-react'
 
 export default async function Hero() {
 
@@ -26,7 +27,7 @@ export default async function Hero() {
 
 					{/* Section header */}
 					<div className={`text-center pb-12 md:pb-16 ${simple.className}`}>
-						<h1 className="text-3xl md:text-3xl leading-tighter tracking-tighter mb-4 font-thin" data-aos="zoom-y-out">
+						<h1 className="text-3xl md:text-3xl leading-tighter tracking-tighter mb-16 font-thin" data-aos="zoom-y-out">
 							<Balancer>
 								With
 								<span className='text-darkbrown'> Booklinkr</span>
@@ -34,18 +35,16 @@ export default async function Hero() {
 								<span className='text-darkbrown'> one convenient link</span>
 								, making it simple to share your reading recommendations with friends, family, and fellow book lovers.
 							</Balancer>
-
 						</h1>
 						<div className="max-w-3xl mx-auto">
-							<p className={`text-xl text-gray-600 mb-8 ${maely.className}`} data-aos="zoom-y-out" data-aos-delay="150">
-								Share your recommended reads with
-								{/* ONE LINK */}
-								<span className="text-darkbrown"> Booklinkr</span>
-							</p>
+							{/* <p className={`text-xl text-gray-600 mb-8 ${maely.className}`} data-aos="zoom-y-out" data-aos-delay="150"> */}
+							{/* 	Share your recommended reads with */}
+							{/* 	<span className="text-darkbrown"> Booklinkr</span> */}
+							{/* </p> */}
 
 
 							<div className={`mx-auto w-fit mb-8 ${simple.className}`} data-aos="zoom-y-out" data-aos-delay="200">
-								<div className='relative h-[175px] w-[120px]' data-aos="zoom-y-out" data-aos-delay="250">
+								<div className='relative h-[175px] w-[120px] animate-bounce' data-aos="zoom-y-out" data-aos-delay="250">
 									<Image src={"/images/lapin-green.png"} fill alt='cover' />
 								</div>
 								Lapin the Librarian
@@ -60,22 +59,30 @@ export default async function Hero() {
 
 								{
 									!session ? (
-										<Link href='/api/auth/signin'>
-											<Button className={`text-2xl ${maely.className} w-full mb-4 sm:w-auto sm:mb-0`}>
-												Sign In
-											</Button>
-										</Link>) : (await checkBookshelfExist(session.user?.id!) ? (
-											<Link href={`/${user_slug}`}>
-												<Button className={`text-2xl ${maely.className} w-full mb-4 sm:w-auto sm:mb-0`}>
-													Go to your page
+										<div className='relative'>
+											<Link href='/api/auth/signin'>
+												<Button className={`text-2xl ${maely.className} w-full sm:w-auto sm:mb-0 bg-darkgreen`}>
+													Create Your Bookshelf	!!
 												</Button>
 											</Link>
+											<IconClick color='#FEFAE0' className='absolute bottom-1 right-1' />
+										</div>
+									)
+										: (await checkBookshelfExist(session.user?.id!) ? (
+											<div className='relative'>
+												<Link href={`/${user_slug}`}>
+													<Button className={`text-2xl ${maely.className} w-full sm:w-auto sm:mb-0 bg-darkgreen`}>
+														Go to your page
+													</Button>
+												</Link>
+												<IconClick color='#FEFAE0' className='absolute bottom-1 right-1' />
+											</div>
 										) : (
 											<div className='md:w-1/2'>
 												<CreateBookshelf userId={session.user?.id!} />
 											</div>
 										)
-									)
+										)
 								}
 							</div>
 						</div>

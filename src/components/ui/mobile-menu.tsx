@@ -89,7 +89,7 @@ export default function MobileMenu() {
 						</li>
 
 						<li className='text-center mb-2'>
-							<Link href={"https://docs.google.com/document/d/1Uoi9QvFdPp3j6WkdDU3Xp4CbjdLkf8FYzDwCPx1ImYw/edit?usp=sharing"}
+							<Link href={"https://docs.google.com/spreadsheets/d/1jD_cwxB7UBK7MHZw0xm2ry2aRObVdHSwQjsosyYz93A/edit?usp=sharing"}
 								target='_blank'>
 								<Button>
 									Product Roadmap

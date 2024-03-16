@@ -19,25 +19,25 @@ export default function FeaturesBlocks() {
 					<div className="max-w-sm mx-auto grid gap-6 md:grid-cols-2 lg:grid-cols-3 items-start md:max-w-2xl lg:max-w-none">
 
 						{/* 1st item */}
-						<div className="relative flex flex-col items-center p-6 bg-white rounded shadow-xl text-center">
+						<div className="relative flex flex-col items-center p-6 bg-white rounded shadow-xl text-left">
 							<IconBook2 />
 
 							<h4 className="text-xl leading-snug tracking-tight mb-1">Create Your Bookshelf</h4>
-							<p className="text-gray-600 text-center">Craft your own digital bookshelf by adding your favorite reads. From beloved classics to newly discovered gems, your collection is yours to showcase.</p>
+							<p className="text-gray-600">Craft your own digital bookshelf by adding your favorite reads. From beloved classics to newly discovered gems, your collection is yours to showcase.</p>
 						</div>
 
 						{/* 2nd item */}
 						<div className="relative flex flex-col items-center p-6 bg-white rounded shadow-xl">
 							<IconShare3 />
 							<h4 className="text-xl leading-snug tracking-tight mb-1">Share Your Link</h4>
-							<p className="text-gray-600 text-center">Receive a unique link to your personalized bookshelf. Share it effortlessly with friends, family, or followers, allowing them to explore your literary world.</p>
+							<p className="text-gray-600">Receive a unique link to your personalized bookshelf. Share it effortlessly with friends, family, or followers, allowing them to explore your literary world.</p>
 						</div>
 
 						{/* 3rd item */}
 						<div className="relative flex flex-col items-center p-6 bg-white rounded shadow-xl">
 							<IconFreeRights />
 							<h4 className="text-xl leading-snug tracking-tight mb-1">Free tier</h4>
-							<p className="text-gray-600 text-center">Basic BookLinkr features are free to use, providing an inclusive platform for book lovers of all backgrounds to connect and share their passion for literature.</p>
+							<p className="text-gray-600">Basic BookLinkr features are free to use, providing an inclusive platform for book lovers of all backgrounds to connect and share their passion for literature.</p>
 						</div>
 
 						{/* 4th item */}
