@@ -10,6 +10,7 @@ import { maely } from '@/lib/fonts'
 import { site } from '@/config/site'
 import { Button } from './button'
 import { useSession } from "next-auth/react"
+import { IconCarrot } from '@tabler/icons-react'
 
 export default function Header() {
 
@@ -36,8 +37,9 @@ export default function Header() {
 					{/* Site branding */}
 					<div className={`shrink-0 mr-4 ${maely.className} text-3xl`}>
 						{/* <Logo /> */}
-						<Link href={"/"}>
+						<Link href={"/"} className='flex items-center'>
 							{site.name}
+							<IconCarrot />
 						</Link>
 					</div>
 

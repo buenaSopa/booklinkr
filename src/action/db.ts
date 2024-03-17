@@ -1,7 +1,7 @@
 "use server"
 
 import { db } from "@/db"
-import { and, eq } from "drizzle-orm"
+import { and, count, eq } from "drizzle-orm"
 import { bookshelf, book, bookOnBookshelf } from "@/db/schema"
 import { Book, mapToBook } from "@/types/book"
 
@@ -145,5 +145,25 @@ export async function getBookByListOfBookId(keys: string[]) {
 	} catch (err) {
 		return []
 	}
-
 }
+
+export async function getTotalBookCount() {
+	try {
+		const total_book_count = await db.select({ count: count() }).from(book)
+		return total_book_count![0].count
+	} catch (err) {
+		console.log("getTotalBookCount error")
+		return null
+	}
+}
+
+export async function getTotalBookshelfCount() {
+	try {
+		const total_bookshelf_count = await db.select({ count: count() }).from(bookshelf)
+		return total_bookshelf_count![0].count
+	} catch (err) {
+		console.log("getTotalBookshelfCount error")
+		return null
+	}
+}
+

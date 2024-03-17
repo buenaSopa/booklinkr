@@ -18,7 +18,7 @@ export default function Newsletter() {
 							{/* CTA content */}
 							<div className="text-center lg:text-left lg:max-w-xl">
 								<h3 className="text-2xl text-lightbrown mb-2">Ready to dive into a world of endless reading possibilities?</h3>
-								<p className=" text-lightbrown text-lg mb-6"> Join our waiting list now to be among the first to experience BookLinkr.</p>
+								<p className=" text-lightbrown text-lg mb-6"> Join our waiting list now to be among the first to know anything related to BookLinkr update.</p>
 								<Link href={site.formLink} target="_blank">
 									<Button className={`text-2xl ${maely.className} w-full mb-4 sm:w-auto sm:mb-0 bg-lightbrown text-darkgreen hover:bg-warmgreen`}>
 										Join waiting list

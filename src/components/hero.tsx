@@ -32,7 +32,7 @@ export default async function Hero() {
 								With
 								<span className='text-darkbrown'> Booklinkr</span>
 								, you can compile all your favorite books into
-								<span className='text-darkbrown'> one convenient link</span>
+								<Link href={"https://www.booklinkr.com/bryan-the-founder"}><span className='text-darkbrown'> one convenient link</span></Link> 
 								, making it simple to share your reading recommendations with friends, family, and fellow book lovers.
 							</Balancer>
 						</h1>
@@ -43,8 +43,8 @@ export default async function Hero() {
 							{/* </p> */}
 
 
-							<div className={`mx-auto w-fit mb-8 ${simple.className}`} data-aos="zoom-y-out" data-aos-delay="200">
-								<div className='relative h-[175px] w-[120px] animate-bounce' data-aos="zoom-y-out" data-aos-delay="250">
+							<div className={`mx-auto w-fit mb-8 ${simple.className} `} data-aos="zoom-y-out" data-aos-delay="200">
+								<div className='relative h-[175px] w-[120px] animate-bounce mx-auto' data-aos="zoom-y-out" data-aos-delay="250">
 									<Image src={"/images/lapin-green.png"} fill alt='cover' />
 								</div>
 								Lapin the Librarian
@@ -62,7 +62,7 @@ export default async function Hero() {
 										<div className='relative'>
 											<Link href='/api/auth/signin'>
 												<Button className={`text-2xl ${maely.className} w-full sm:w-auto sm:mb-0 bg-darkgreen`}>
-													Create Your Bookshelf	!!
+													Create Your Bookshelf
 												</Button>
 											</Link>
 											<IconClick color='#FEFAE0' className='absolute bottom-1 right-1 sm:hidden' />

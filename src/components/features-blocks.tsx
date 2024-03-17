@@ -5,7 +5,7 @@ export default function FeaturesBlocks() {
 		<section className="relative bg-darkgreen">
 
 			{/* Section background (needs .relative class on parent and next sibling elements) */}
-			<div className="absolute left-0 right-0 bottom-0 m-auto w-px p-px h-20 bg-darkbrown transform translate-y-1/2"></div>
+			{/* <div className="absolute left-0 right-0 bottom-0 m-auto w-px p-px h-20 bg-darkbrown transform translate-y-1/2"></div> */}
 
 			<div className="relative max-w-6xl mx-auto px-4 sm:px-6">
 				<div className="py-12 md:py-20">
@@ -22,21 +22,21 @@ export default function FeaturesBlocks() {
 						<div className="relative flex flex-col items-center p-6 bg-white rounded shadow-xl text-left">
 							<IconBook2 />
 
-							<h4 className="text-xl leading-snug tracking-tight mb-1">Create Your Bookshelf</h4>
+							<h4 className="text-xl leading-snug tracking-tight mb-1 text-center">Create Your Bookshelf</h4>
 							<p className="text-gray-600">Craft your own digital bookshelf by adding your favorite reads. From beloved classics to newly discovered gems, your collection is yours to showcase.</p>
 						</div>
 
 						{/* 2nd item */}
 						<div className="relative flex flex-col items-center p-6 bg-white rounded shadow-xl">
 							<IconShare3 />
-							<h4 className="text-xl leading-snug tracking-tight mb-1">Share Your Link</h4>
+							<h4 className="text-xl leading-snug tracking-tight mb-1 text-center">Share Your Link</h4>
 							<p className="text-gray-600">Receive a unique link to your personalized bookshelf. Share it effortlessly with friends, family, or followers, allowing them to explore your literary world.</p>
 						</div>
 
 						{/* 3rd item */}
 						<div className="relative flex flex-col items-center p-6 bg-white rounded shadow-xl">
 							<IconFreeRights />
-							<h4 className="text-xl leading-snug tracking-tight mb-1">Free tier</h4>
+							<h4 className="text-xl leading-snug tracking-tight mb-1 text-center">Free tier</h4>
 							<p className="text-gray-600">Basic BookLinkr features are free to use, providing an inclusive platform for book lovers of all backgrounds to connect and share their passion for literature.</p>
 						</div>
 

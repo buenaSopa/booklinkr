@@ -10,6 +10,7 @@ import Testimonials from '@/components/testimonials'
 import Newsletter from '@/components/newsletter'
 import Image from 'next/image'
 import { auth } from '@/auth'
+import CollectiveStats from '@/components/collective-stats'
 
 export default async function Home() {
 	const session = await auth()
@@ -18,6 +19,7 @@ export default async function Home() {
 		<>
 			<Hero />
 			{/* <Features /> */}
+			<CollectiveStats />
 			<FeaturesBlocks />
 			{/* <Testimonials /> */}
 			<Newsletter />
