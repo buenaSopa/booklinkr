@@ -60,6 +60,7 @@ export function Combobox({
 	onSearchChange
 }: ComboboxProps) {
 	const [open, setOpen] = React.useState(false)
+	console.log(items)
 
 	const handleOnSearchChange = useDebouncedCallback((e: string) => {
 		if (e === '') {
@@ -110,18 +111,14 @@ export function Combobox({
 									</div>
 							}
 						</CommandEmpty>
-
 						<CommandGroup>
 							{items.map(item => (
 								<CommandItem
-									key={item.value}
+									key={item.book.key}
 									value={item.label}
 									onSelect={currentValue => {
 										onSelect(
-											currentValue === item.label.toLowerCase()
-												? item.book
-												: item.book
-										)
+											item.book)
 										setOpen(false)
 									}}
 								>

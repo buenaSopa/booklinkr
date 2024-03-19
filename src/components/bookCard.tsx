@@ -57,7 +57,7 @@ const BookCard: React.FC<BookProps> = ({ book, myBooks, setMyBooks, isUserBooksh
 					</DialogContent>
 				</Dialog>
 			}
-			<div className={`h-60 bg-cover bg-center ${book.cover == "" ? 'bg-darkgreen' : 'bg-darkgreen'}`} style={{ backgroundImage: `url(${book.cover})` }}></div>
+			<div className={`h-60 md:h-80 bg-cover bg-center ${book.cover == "" ? 'bg-darkgreen' : 'bg-darkgreen'}`} style={{ backgroundImage: `url(${book.cover})` }}></div>
 			{/* <div className='relative h-[175px] w-[120px]'> */}
 			{/* 	<Image src={cover!} fill alt='rabbit'  className=''/> */}
 			{/* </div> */}

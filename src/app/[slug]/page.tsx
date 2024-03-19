@@ -19,38 +19,69 @@ function transformString(input: string): string {
 async function formatSearch(jsonData: any[]): Promise<Book[]> {
 	const beautifiedData: Book[] = [];
 
-	async function fetchCover(coverEditionKey: string): Promise<string> {
-		if (!coverEditionKey) return '';
 
-		const url = `https://covers.openlibrary.org/b/olid/${coverEditionKey}-M.jpg`;
+	// Start all cover fetches in parallel
+	const coverFetchPromises = jsonData.map(async (item) => {
+		// if (!item.cover_edition_key) return '';
+
+		const url = `https://covers.openlibrary.org/b/olid/${item.cover_edition_key}-M.jpg`;
+		console.log(url)
+
 		try {
+			if (!item.cover_edition_key) {
+				return item
+			}
 			const response = await fetch(url);
 			if (response.ok) {
-				return url;
+				return { ...item, cover: url }; // Return item with cover URL
 			} else {
-				return '';
+				return item; // Return item without cover if fetch fails
 			}
 		} catch (error) {
 			console.error("Error fetching cover:", error);
-			return '';
+			return item; // Return item without cover if error occurs
 		}
-	}
+	});
 
-	for (const item of jsonData) {
-		const cover = await fetchCover(item.cover_edition_key);
-		// const desc = await fetchDescription(item.key);
+	// Wait for all fetches to complete
+	const formattedItems = await Promise.all(coverFetchPromises);
 
-		const beautifiedItem: Book = {
-			key: item.key || '',
-			title: item.title || '',
-			author_name: (item.author_name && item.author_name.length > 0) ? item.author_name[0] : '',
-			cover: cover,
-			// desc: desc
-		};
-		beautifiedData.push(beautifiedItem);
-	}
+	beautifiedData.push(...formattedItems);
 
 	return beautifiedData;
+
+	// async function fetchCover(coverEditionKey: string): Promise<string> {
+	// 	if (!coverEditionKey) return '';
+
+	// 	const url = `https://covers.openlibrary.org/b/olid/${coverEditionKey}-M.jpg`;
+	// 	try {
+	// 		const response = await fetch(url);
+	// 		if (response.ok) {
+	// 			return url;
+	// 		} else {
+	// 			return '';
+	// 		}
+	// 	} catch (error) {
+	// 		console.error("Error fetching cover:", error);
+	// 		return '';
+	// 	}
+	// }
+
+	// for (const item of jsonData) {
+	// 	const cover = await fetchCover(item.cover_edition_key);
+	// 	// const desc = await fetchDescription(item.key);
+
+	// 	const beautifiedItem: Book = {
+	// 		key: item.key || '',
+	// 		title: item.title || '',
+	// 		author_name: (item.author_name && item.author_name.length > 0) ? item.author_name[0] : '',
+	// 		cover: cover,
+	// 		// desc: desc
+	// 	};
+	// 	beautifiedData.push(beautifiedItem);
+	// }
+
+	// return beautifiedData;
 }
 
 export default function Page({ params }: { params: { slug: string } }) {
@@ -60,7 +91,6 @@ export default function Page({ params }: { params: { slug: string } }) {
 	const session = useSession()
 	const [lib, setLib] = useState(true)
 	const [authUserSlug, setAuthUserSlug] = useState("")
-	// console.log(session)
 
 	useEffect(() => {
 		(async () => {
@@ -79,7 +109,7 @@ export default function Page({ params }: { params: { slug: string } }) {
 
 			// get book
 			const res = await getBookBySlug(params.slug)
-			console.log(res)
+			// console.log(res)
 			const listOfBookId = res.map(book => book.book_id)
 			const books = await getBookByListOfBookId(listOfBookId)
 			setMyBooks(books)
@@ -114,10 +144,11 @@ export default function Page({ params }: { params: { slug: string } }) {
 			console.log(transformString(value))
 			// const response = await fetch(`https://openlibrary.org/search.json?title=${transformString(value)}&limit=5&fields=author_name,cover_edition_key,title,key`)
 			const response = await fetch(`https://openlibrary.org/search.json?q=${transformString(value)}&mode=everything&limit=5&fields=author_name,cover_edition_key,title,key`)
+			console.log(`https://openlibrary.org/search.json?q=${transformString(value)}&mode=everything&limit=8&fields=author_name,cover_edition_key,title,key`)
 			const json = await response.json()
 
 			const searchResult = await formatSearch(json.docs)
-			console.log(searchResult)
+			// console.log(searchResult)
 
 			setBooks(
 				searchResult.map(book => ({
