@@ -22,12 +22,12 @@ import { createBookshelf } from "@/action/db"
 const slugSchema = z
 	.string()
 	.trim() // Remove leading/trailing whitespace
-	.regex(/^[a-z0-9]+(-[a-z0-9]+)*$/, {
-		message: "Link can only contain lowercase letters, numbers, and hyphens in between",
+	.regex(/^[a-z0-9]+(?:(?:-|_)+[a-z0-9]+)*$/, {
+		message: "lowercase, numbers, hyphens and underscore in between",
 	}).min(1, {
 		message: "Link must be at least 1 characters.",
-	}).max(17, {
-		message: "Link must be within 17 characters"
+	}).max(24, {
+		message: "Link must be within 24 characters"
 	});
 
 const formSchema = z.object({
@@ -87,7 +87,7 @@ export function CreateBookshelf({ userId }: { userId: string }) {
 										</div>
 									) : (
 										<div>
-											ex. lapin-the-rabit
+											ex. lapin-rabbit, rabbit24, la_pin
 										</div>
 									)}
 								</FormDescription>
