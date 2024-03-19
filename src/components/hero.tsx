@@ -61,7 +61,7 @@ export default async function Hero() {
 									!session ? (
 										<div className='relative'>
 											<Link href='/api/auth/signin'>
-												<Button className={`text-2xl ${maely.className} w-full sm:w-auto sm:mb-0 bg-orange-300 text-green-400  hover:bg-orange-300`}>
+												<Button className={`text-2xl ${maely.className} w-full sm:w-auto sm:mb-0 bg-orange-500 text-lightbrown hover:bg-orange-300`}>
 													Create Your Bookshelf
 												</Button>
 											</Link>
