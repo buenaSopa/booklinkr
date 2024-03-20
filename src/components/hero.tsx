@@ -29,10 +29,9 @@ export default async function Hero() {
 					<div className={`text-center pb-12 md:pb-16 ${simple.className}`}>
 						<h1 className="text-3xl md:text-3xl leading-tighter tracking-tighter mb-16 font-thin" data-aos="zoom-y-out">
 							<Balancer>
-								With
-								<span className='text-orange-500'> Booklinkr</span>
+								With Booklinkr
 								, you can compile all your favorite books into
-								<Link href={"https://www.booklinkr.com/bryan-the-founder"}><span className='text-orange-500 hover:text-orange-300'> one convenient link</span></Link> 
+								<Link href={"https://www.booklinkr.com/bryan-the-founder"} target="_blank" ><span className='text-darkbrown hover:text-darkgreen'> one convenient link</span></Link> 
 								, making it simple to share your reading recommendations with friends, family, and fellow book lovers.
 							</Balancer>
 						</h1>
@@ -61,7 +60,7 @@ export default async function Hero() {
 									!session ? (
 										<div className='relative'>
 											<Link href='/api/auth/signin'>
-												<Button className={`text-2xl ${maely.className} w-full sm:w-auto sm:mb-0 bg-orange-500 text-lightbrown hover:bg-orange-300`}>
+												<Button className={`text-2xl ${maely.className} w-full sm:w-auto sm:mb-0 bg-darkbrown text-lightbrown hover:bg-darkgreen`}>
 													Create Your Bookshelf
 												</Button>
 											</Link>
@@ -71,7 +70,7 @@ export default async function Hero() {
 										: (await checkBookshelfExist(session.user?.id!) ? (
 											<div className='relative'>
 												<Link href={`/${user_slug}`}>
-													<Button className={`text-2xl ${maely.className} w-full sm:w-auto sm:mb-0 bg-orange-500 text-lightbrown hover:bg-orange-300`}>
+													<Button className={`text-2xl ${maely.className} w-full sm:w-auto sm:mb-0 bg-darkbrown text-lightbrown hover:bg-darkgreen`}>
 														Go to your page
 													</Button>
 												</Link>

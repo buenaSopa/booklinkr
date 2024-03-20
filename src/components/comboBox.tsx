@@ -19,6 +19,7 @@ import {
 import { ScrollArea } from './ui/scroll-area'
 import Image from 'next/image'
 import { Book } from '@/types/book'
+import { IconSearch } from '@tabler/icons-react'
 
 export type ComboBoxItemType = {
 	value: string
@@ -81,7 +82,7 @@ export function Combobox({
 					aria-expanded={open}
 					className={cn('justify-between text-xl', className)}
 				>
-					{selectItemMsg}
+					{selectItemMsg} <IconSearch />
 				</Button>
 			</PopoverTrigger>
 			<PopoverContent
