@@ -27,22 +27,19 @@ export default async function Hero() {
 
 					{/* Section header */}
 					<div className={`text-center pb-12 md:pb-16 ${simple.className}`}>
-						<h1 className="text-3xl md:text-3xl leading-tighter tracking-tighter mb-16 font-thin" data-aos="zoom-y-out">
+						<h1 className="text-3xl md:text-3xl leading-tighter tracking-tighter mb-2 font-thin" data-aos="zoom-y-out">
 							<Balancer>
-								With Booklinkr
-								, you can compile all your favorite books into
-								<Link href={"https://www.booklinkr.com/bryan-the-founder"} target="_blank" ><span className='text-darkbrown hover:text-darkgreen'> one convenient link</span></Link> 
-								, making it simple to share your reading recommendations with friends, family, and fellow book lovers.
+								Compile all your favorite books into
+								<Link href={"https://www.booklinkr.com/bryan-the-founder"} target="_blank" ><span className='text-darkbrown hover:text-darkgreen'> one link</span></Link>
 							</Balancer>
 						</h1>
+
+						<p className={`mb-24 text-lg ${simple.className}`} data-aos="zoom-y-out" data-aos-delay="150">
+							making it simple to share it to friends and followers
+							</p>
+
 						<div className="max-w-3xl mx-auto">
-							{/* <p className={`text-xl text-gray-600 mb-8 ${maely.className}`} data-aos="zoom-y-out" data-aos-delay="150"> */}
-							{/* 	Share your recommended reads with */}
-							{/* 	<span className="text-darkbrown"> Booklinkr</span> */}
-							{/* </p> */}
-
-
-							<div className={`mx-auto w-fit mb-8 ${simple.className} `} data-aos="zoom-y-out" data-aos-delay="200">
+							<div className={`mx-auto w-fit mb-16 ${simple.className} `} data-aos="zoom-y-out" data-aos-delay="200">
 								<div className='relative h-[175px] w-[120px] animate-bounce mx-auto' data-aos="zoom-y-out" data-aos-delay="250">
 									<Image src={"/images/lapin-green.png"} fill alt='cover' />
 								</div>
@@ -58,13 +55,20 @@ export default async function Hero() {
 
 								{
 									!session ? (
-										<div className='relative'>
-											<Link href='/api/auth/signin'>
-												<Button className={`text-2xl ${maely.className} w-full sm:w-auto sm:mb-0 bg-darkbrown text-lightbrown hover:bg-darkgreen`}>
-													Create Your Bookshelf
+										<div className='flex flex-col'>
+											<div className='relative mb-2'>
+												<Link href='/api/auth/signin'>
+													<Button className={`text-2xl ${maely.className} w-full sm:w-auto sm:mb-0 bg-darkbrown text-lightbrown hover:bg-darkgreen`}>
+														Create Bookshelf
+													</Button>
+												</Link>
+											</div>
+											<Link href='https://www.booklinkr.com/bryan-the-founder'
+											target='_blank'>
+												<Button className={`text-2xl ${maely.className} w-full sm:w-auto sm:mb-0 bg-darkgreen text-lightbrown`}>
+													Example
 												</Button>
 											</Link>
-											<IconClick color='#FEFAE0' className='absolute bottom-1 right-1 sm:hidden' />
 										</div>
 									)
 										: (await checkBookshelfExist(session.user?.id!) ? (
