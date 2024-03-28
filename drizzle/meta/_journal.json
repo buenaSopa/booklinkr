@@ -15,6 +15,69 @@
       "when": 1709997815505,
       "tag": "0001_supreme_zarda",
       "breakpoints": true
+    },
+    {
+      "idx": 2,
+      "version": "5",
+      "when": 1710992109382,
+      "tag": "0002_shiny_ozymandias",
+      "breakpoints": true
+    },
+    {
+      "idx": 3,
+      "version": "5",
+      "when": 1710992481682,
+      "tag": "0003_tidy_phantom_reporter",
+      "breakpoints": true
+    },
+    {
+      "idx": 4,
+      "version": "5",
+      "when": 1710992528530,
+      "tag": "0004_yellow_skullbuster",
+      "breakpoints": true
+    },
+    {
+      "idx": 5,
+      "version": "5",
+      "when": 1710992841540,
+      "tag": "0005_magical_nuke",
+      "breakpoints": true
+    },
+    {
+      "idx": 6,
+      "version": "5",
+      "when": 1710992903541,
+      "tag": "0006_black_leopardon",
+      "breakpoints": true
+    },
+    {
+      "idx": 7,
+      "version": "5",
+      "when": 1710992945310,
+      "tag": "0007_striped_blob",
+      "breakpoints": true
+    },
+    {
+      "idx": 8,
+      "version": "5",
+      "when": 1710992968446,
+      "tag": "0008_plain_deathbird",
+      "breakpoints": true
+    },
+    {
+      "idx": 9,
+      "version": "5",
+      "when": 1711014736472,
+      "tag": "0009_fast_xavin",
+      "breakpoints": true
+    },
+    {
+      "idx": 10,
+      "version": "5",
+      "when": 1711014770842,
+      "tag": "0010_petite_doomsday",
+      "breakpoints": true
     }
   ]
 }

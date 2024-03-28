@@ -1,0 +1,1 @@
+ALTER TABLE "book" ALTER COLUMN "ex_link" SET DEFAULT '{goodreads: "", libraryany: ""}'::jsonb;

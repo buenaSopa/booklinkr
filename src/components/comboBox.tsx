@@ -51,7 +51,7 @@ export function Combobox({
 	value,
 	onSelect,
 	items,
-	searchPlaceholder = 'Book Name',
+	searchPlaceholder = 'Book + Author(optional)',
 	noResultsMsg = 'No Result',
 	selectItemMsg = 'Search Book Name',
 	className,
@@ -61,7 +61,7 @@ export function Combobox({
 	onSearchChange
 }: ComboboxProps) {
 	const [open, setOpen] = React.useState(false)
-	console.log(items)
+	// console.log(items)
 
 	const handleOnSearchChange = useDebouncedCallback((e: string) => {
 		if (e === '') {
@@ -123,12 +123,12 @@ export function Combobox({
 										setOpen(false)
 									}}
 								>
-									<Check
-										className={cn(
-											'mr-2 h-4 w-4',
-											value === item.value ? 'opacity-100' : 'opacity-0'
-										)}
-									/>
+									{/* <Check */}
+									{/* 	className={cn( */}
+									{/* 		'mr-2 h-4 w-4', */}
+									{/* 		value === item.value ? 'opacity-100' : 'opacity-0' */}
+									{/* 	)} */}
+									{/* /> */}
 									{item.label}
 									<div className='relative h-[50px] w-[35px] ml-5' data-aos="zoom-y-out" data-aos-delay="250">
 										<Image src={item.url!} fill alt='cover' />

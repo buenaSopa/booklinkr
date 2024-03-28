@@ -18,14 +18,22 @@ function transformString(input: string): string {
 
 async function formatSearch(jsonData: any[]): Promise<Book[]> {
 	const beautifiedData: Book[] = [];
+	console.log(jsonData)
 
-
+	// Process items, preserving original data and adding ex_link
+	const processedItems = jsonData.map((item) => {
+		return {
+			...item, // Spread operator to copy existing properties
+			ex_link: {
+				goodreads: item.id_goodreads?.[0] ?? "",
+				libraryany: item.id_librarything?.[0] ?? "",
+			},
+		};
+	});
 	// Start all cover fetches in parallel
-	const coverFetchPromises = jsonData.map(async (item) => {
-		// if (!item.cover_edition_key) return '';
+	const coverFetchPromises = processedItems.map(async (item) => {
 
 		const url = `https://covers.openlibrary.org/b/olid/${item.cover_edition_key}-M.jpg`;
-		console.log(url)
 
 		try {
 			if (!item.cover_edition_key) {
@@ -49,39 +57,6 @@ async function formatSearch(jsonData: any[]): Promise<Book[]> {
 	beautifiedData.push(...formattedItems);
 
 	return beautifiedData;
-
-	// async function fetchCover(coverEditionKey: string): Promise<string> {
-	// 	if (!coverEditionKey) return '';
-
-	// 	const url = `https://covers.openlibrary.org/b/olid/${coverEditionKey}-M.jpg`;
-	// 	try {
-	// 		const response = await fetch(url);
-	// 		if (response.ok) {
-	// 			return url;
-	// 		} else {
-	// 			return '';
-	// 		}
-	// 	} catch (error) {
-	// 		console.error("Error fetching cover:", error);
-	// 		return '';
-	// 	}
-	// }
-
-	// for (const item of jsonData) {
-	// 	const cover = await fetchCover(item.cover_edition_key);
-	// 	// const desc = await fetchDescription(item.key);
-
-	// 	const beautifiedItem: Book = {
-	// 		key: item.key || '',
-	// 		title: item.title || '',
-	// 		author_name: (item.author_name && item.author_name.length > 0) ? item.author_name[0] : '',
-	// 		cover: cover,
-	// 		// desc: desc
-	// 	};
-	// 	beautifiedData.push(beautifiedItem);
-	// }
-
-	// return beautifiedData;
 }
 
 export default function Page({ params }: { params: { slug: string } }) {
@@ -143,12 +118,10 @@ export default function Page({ params }: { params: { slug: string } }) {
 		try {
 			console.log(transformString(value))
 			// const response = await fetch(`https://openlibrary.org/search.json?title=${transformString(value)}&limit=5&fields=author_name,cover_edition_key,title,key`)
-			const response = await fetch(`https://openlibrary.org/search.json?q=${transformString(value)}&mode=everything&limit=12&fields=author_name,cover_edition_key,title,key`)
-			console.log(`https://openlibrary.org/search.json?q=${transformString(value)}&mode=everything&limit=8&fields=author_name,cover_edition_key,title,key`)
+			const response = await fetch(`https://openlibrary.org/search.json?q=${transformString(value)}&mode=everything&limit=8&fields=author_name,cover_edition_key,title,key,id_goodreads,id_librarything`)
+			// console.log(`https://openlibrary.org/search.json?q=${transformString(value)}&mode=everything&limit=12&fields=author_name,cover_edition_key,title,key,id_goodreads,id_librarything`)
 			const json = await response.json()
-
 			const searchResult = await formatSearch(json.docs)
-			// console.log(searchResult)
 
 			setBooks(
 				searchResult.map(book => ({

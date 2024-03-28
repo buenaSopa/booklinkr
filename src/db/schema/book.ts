@@ -1,12 +1,13 @@
 import {
 	integer,
+	jsonb,
 	pgTable,
 	primaryKey,
 	serial,
 	text,
 } from "drizzle-orm/pg-core"
 import { users } from "./user"
-import { relations } from "drizzle-orm"
+import { relations, sql } from "drizzle-orm"
 
 export const bookshelf = pgTable("bookshelf", {
 	id: text("id").notNull().primaryKey().references(() => users.id),
@@ -23,6 +24,7 @@ export const book = pgTable("book", {
 	title: text('title').notNull(),
 	author: text('author'),
 	cover_url: text('cover_url'),
+	ex_link: jsonb('ex_link').default(sql`'{"goodreads": "", "libraryany": ""}'::jsonb`),
 })
 
 export const bookRelation = relations(book, ({ many }) => ({

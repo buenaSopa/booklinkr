@@ -1,9 +1,9 @@
 "use server"
 
 import { db } from "@/db"
-import { and, count, eq } from "drizzle-orm"
+import { and, count, eq, sql } from "drizzle-orm"
 import { bookshelf, book, bookOnBookshelf } from "@/db/schema"
-import { Book, mapToBook } from "@/types/book"
+import { Book, mapToBook, mapToBookFromDB } from "@/types/book"
 
 export async function checkBookshelfExist(userId: string) {
 	try {
@@ -69,17 +69,25 @@ export async function getUserSlug(userId: string) {
 
 export async function addBook(book_obj: Book, slug: string) {
 	try {
-		try {
-			await db.insert(book).values({ title: book_obj.title, cover_url: book_obj.cover, author: book_obj.author_name, work_key: book_obj.key })
-		} catch (err) {
-			console.log(err)
-			console.log("book probably already in db")
+
+		const qbook = await db.query.book.findFirst({
+			where: eq(book.work_key, book_obj.key)
+		})
+
+		// if only book exist and both link is empty, i update the ex link
+		// @ts-ignore
+		if (qbook && Object.values(qbook.ex_link).every(value => value === '')) {
+			await db.update(book).set({ ex_link: sql`${book_obj.ex_link}::jsonb` }).where(eq(book.work_key, book_obj.key))
 		}
+
+		// if book no exist, add book
+		if (!qbook) {
+			await db.insert(book).values({ title: book_obj.title, cover_url: book_obj.cover, author: book_obj.author_name, work_key: book_obj.key, ex_link: sql`${book_obj.ex_link}::jsonb` })
+		} 
 
 		const bookshelf_obj = await db.query.bookshelf.findFirst({
 			where: eq(bookshelf.slug, slug)
 		})
-		console.log(bookshelf_obj)
 
 		await db.insert(bookOnBookshelf).values({ book_id: book_obj.key, bookshelf_id: bookshelf_obj?.id! })
 
@@ -89,7 +97,6 @@ export async function addBook(book_obj: Book, slug: string) {
 		console.log(e)
 		return false
 	}
-
 }
 
 export async function removeBookByKeyAndBookshelfId(key: string, bookshelfId: string) {
@@ -110,7 +117,7 @@ export async function removeBookByKeyAndBookshelfId(key: string, bookshelfId: st
 export async function getBookByBookshelfId(bookshelfId: string) {
 	try {
 		const res = await db.select().from(bookOnBookshelf).where(eq(bookOnBookshelf.bookshelf_id, bookshelfId))
-		console.log(res)
+		// console.log(res)
 		return res
 	} catch (err) {
 		return false
@@ -139,8 +146,9 @@ export async function getBookByListOfBookId(keys: string[]) {
 			const one_book = await db.query.book.findFirst({
 				where: eq(book.work_key, key)
 			})
-			listOfBook.push(mapToBook(one_book))
+			listOfBook.push(mapToBookFromDB(one_book))
 		}
+		console.log(listOfBook)
 		return listOfBook
 	} catch (err) {
 		return []
