@@ -11,6 +11,7 @@ import Newsletter from '@/components/newsletter'
 import Image from 'next/image'
 import { auth } from '@/auth'
 import CollectiveStats from '@/components/collective-stats'
+import Faq from '@/components/faq'
 
 export default async function Home() {
 	const session = await auth()
@@ -21,6 +22,7 @@ export default async function Home() {
 			{/* <Features /> */}
 			<CollectiveStats />
 			<FeaturesBlocks />
+			<Faq />
 			{/* <Testimonials /> */}
 			<Newsletter />
 		</>

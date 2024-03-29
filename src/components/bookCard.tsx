@@ -70,7 +70,7 @@ const BookCard: React.FC<BookProps> = ({ book, myBooks, setMyBooks, isUserBooksh
 						)}
 					</div>
 				</DrawerTrigger>
-				<DrawerContent className='h-[90svh]'>
+				<DrawerContent className='h-[95svh]'>
 					<DrawerHeader>
 						<DrawerTitle>
 							<CopyToClipboard text={`${book.title} ${book.author_name}`}
