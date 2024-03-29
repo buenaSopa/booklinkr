@@ -41,10 +41,18 @@ export default function Faq() {
 								<a href="https://twitter.com/officialbkyh" className="underline" target="_blank"> Twitter </a>.
 							</AccordionContent>
 						</AccordionItem>
+
+						<AccordionItem value="item-5">
+							<AccordionTrigger>Support</AccordionTrigger>
+							<AccordionContent>
+								If you want to update your link or any request, <a href="https://twitter.com/officialbkyh" className="underline" target="_blank"> DM me </a>.
+							</AccordionContent>
+						</AccordionItem>
+
 						<AccordionItem value="item-4">
 							<AccordionTrigger>More</AccordionTrigger>
 							<AccordionContent>
-								Check out my <a href="https://lifeofamoh.substack.com/" className="underline" target="_blank">Substack</a>, I try to write blogs that help first time founder. Check out my <a href="https://twitter.com/officialbkyh" className="underline" target="_blank"> Twitter </a>to follow my journey of a indie dev if interested. Thanks for the attention
+								Check out my <a href="https://lifeofamoh.substack.com/" className="underline" target="_blank">Substack</a>, I try to write blogs that help first time founder. Check out my <a href="https://twitter.com/officialbkyh" className="underline" target="_blank"> Twitter </a>to follow my journey of a indie dev if interested. Thanks :)
 							</AccordionContent>
 						</AccordionItem>
 					</Accordion>
