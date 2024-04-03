@@ -24,8 +24,8 @@ const slugSchema = z
 	.trim() // Remove leading/trailing whitespace
 	.regex(/^[a-z0-9]+(?:(?:-|_)+[a-z0-9]+)*$/, {
 		message: "lowercase, numbers, hyphens and underscore in between",
-	}).min(1, {
-		message: "Link must be at least 1 characters.",
+	}).min(2, {
+		message: "Link must be at least 2 characters.",
 	}).max(24, {
 		message: "Link must be within 24 characters"
 	});
