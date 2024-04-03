@@ -125,19 +125,19 @@ const BookCard: React.FC<BookProps> = ({ book, myBooks, setMyBooks, isUserBooksh
 						</Button>
 
 
-						{book.ex_link?.id_libranything &&
-							<Button
-								className='bg-[#4E3431] text-[#FBFBFB]'
-							>
-								<Link
-									className='w-full'
-									href={`https://www.librarything.com/work/${book.ex_link.id_libranything}`}
-									target='_blank'
-								>
-									LibraryThing (test)
-								</Link>
-							</Button>
-						}
+						{/* {book.ex_link?.id_libranything && */}
+						{/* 	<Button */}
+						{/* 		className='bg-[#4E3431] text-[#FBFBFB]' */}
+						{/* 	> */}
+						{/* 		<Link */}
+						{/* 			className='w-full' */}
+						{/* 			href={`https://www.librarything.com/work/${book.ex_link.id_libranything}`} */}
+						{/* 			target='_blank' */}
+						{/* 		> */}
+						{/* 			LibraryThing (test) */}
+						{/* 		</Link> */}
+						{/* 	</Button> */}
+						{/* } */}
 
 
 						{isUserBookshelf &&

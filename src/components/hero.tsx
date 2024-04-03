@@ -29,14 +29,16 @@ export default async function Hero() {
 					<div className={`text-center pb-12 md:pb-16 ${simple.className}`}>
 						<h1 className="text-3xl md:text-3xl leading-tighter tracking-tighter mb-2 font-thin" data-aos="zoom-y-out">
 							<Balancer>
-								Compile all your favorite books into
-								<Link href={"https://www.booklinkr.com/bryan-the-founder"} target="_blank" ><span className='text-darkbrown hover:text-darkgreen'> one link</span></Link>
+								Connect better with fellow book readers
 							</Balancer>
 						</h1>
 
 						<p className={`mb-24 text-lg ${simple.className}`} data-aos="zoom-y-out" data-aos-delay="150">
-							making it simple to share it to friends and followers
-							</p>
+							<Balancer>
+								by sharing all your favorite reads with
+								<Link href={"https://www.booklinkr.com/bryan-the-founder"} target="_blank" ><span className='text-darkbrown hover:text-darkgreen'> one link</span></Link>
+							</Balancer>
+						</p>
 
 						<div className="max-w-3xl mx-auto">
 							<div className={`mx-auto w-fit mb-16 ${simple.className} `} data-aos="zoom-y-out" data-aos-delay="200">
@@ -64,7 +66,7 @@ export default async function Hero() {
 												</Link>
 											</div>
 											<Link href='https://www.booklinkr.com/bryan-the-founder'
-											target='_blank'>
+												target='_blank'>
 												<Button className={`text-2xl ${maely.className} w-full sm:w-auto sm:mb-0 bg-darkgreen text-lightbrown`}>
 													Example
 												</Button>
