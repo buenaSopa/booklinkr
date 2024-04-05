@@ -7,6 +7,11 @@ const nextConfig = {
 				hostname: 'covers.openlibrary.org',
 				port: '',
 			},
+			{
+				protocol: 'https',
+				hostname: 'openlibrary.org',
+				port: '',
+			},
 		],
 	},
 }

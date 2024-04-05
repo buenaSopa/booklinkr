@@ -88,19 +88,21 @@ export default function MobileMenu() {
 							}
 						</li>
 
-						<li className='text-center mb-2'>
-							<Link href={"https://docs.google.com/spreadsheets/d/1jD_cwxB7UBK7MHZw0xm2ry2aRObVdHSwQjsosyYz93A/edit?usp=sharing"}
-								target='_blank'>
-								<Button>
-									Product Roadmap
-								</Button>
-							</Link>
-						</li>
+						{/* <li className='text-center mb-2'> */}
+						{/* 	<Link href={"https://docs.google.com/spreadsheets/d/1jD_cwxB7UBK7MHZw0xm2ry2aRObVdHSwQjsosyYz93A/edit?usp=sharing"} */}
+						{/* 		target='_blank'> */}
+						{/* 		<Button> */}
+						{/* 			Product Roadmap */}
+						{/* 		</Button> */}
+						{/* 	</Link> */}
+						{/* </li> */}
 
 						<li className='text-center mb-2'>
-							<Link href={"https://twitter.com/officialbkyh"}>
+							<Link
+								href={"https://twitter.com/officialbkyh"}
+								target='_blank'>
 								<Button>
-									Support: dm me on x
+									Founder
 								</Button>
 							</Link>
 						</li>

@@ -189,6 +189,22 @@ export async function getSlugSortByBook() {
 		return slugs
 	} catch (err) {
 		console.log(err)
+		return []
 	}
 }
 
+export async function getBookRandom() {
+	try {
+		const books = await db.execute(sql`
+			SELECT title, cover_url, work_key
+			FROM book
+			WHERE cover_url IS NOT NULL AND cover_url <> '' -- Ensuring cover_url is not empty
+			ORDER BY RANDOM() -- Randomize the order of results
+			LIMIT 30;
+																	`)
+		return books
+	} catch (err) {
+		console.log(err)
+		return []
+	}
+}

@@ -33,7 +33,7 @@ function splitIntoThreeLists(data: BookData[]): [BookData[], BookData[], BookDat
 	return [list1, list2, list3];
 }
 
-export default async function Discover() {
+export default async function DiscoverBookshelf() {
 	const slugs = await getSlugSortByBook()
 	// @ts-ignore
 	const lists = splitIntoThreeLists(slugs);

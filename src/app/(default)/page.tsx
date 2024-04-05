@@ -12,7 +12,8 @@ import Image from 'next/image'
 import { auth } from '@/auth'
 import CollectiveStats from '@/components/collective-stats'
 import Faq from '@/components/faq'
-import Discover from '@/components/discover'
+import DiscoverBookshelf from '@/components/discoverBookshelf'
+import DiscoverBook from '@/components/discoverBook'
 
 export default async function Home() {
 	const session = await auth()
@@ -20,7 +21,8 @@ export default async function Home() {
 	return (
 		<>
 			<Hero />
-			<Discover />
+			<DiscoverBookshelf />
+			<DiscoverBook />
 			{/* <Features /> */}
 			<CollectiveStats />
 			<FeaturesBlocks />
