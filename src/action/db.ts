@@ -83,7 +83,7 @@ export async function addBook(book_obj: Book, slug: string) {
 		// if book no exist, add book
 		if (!qbook) {
 			await db.insert(book).values({ title: book_obj.title, cover_url: book_obj.cover, author: book_obj.author_name, work_key: book_obj.key, ex_link: sql`${book_obj.ex_link}::jsonb` })
-		} 
+		}
 
 		const bookshelf_obj = await db.query.bookshelf.findFirst({
 			where: eq(bookshelf.slug, slug)
@@ -172,6 +172,23 @@ export async function getTotalBookshelfCount() {
 	} catch (err) {
 		console.log("getTotalBookshelfCount error")
 		return null
+	}
+}
+
+
+export async function getSlugSortByBook() {
+	try {
+		const slugs = await db.execute(sql`
+			SELECT bookshelf.slug, COUNT(book_bookshelf.book_id) as num_book
+			FROM bookshelf
+			JOIN book_bookshelf on bookshelf.id = book_bookshelf.bookself_id
+			GROUP by bookshelf.id
+			ORDER BY num_book DESC
+			LIMIT 18;
+														 `)
+		return slugs
+	} catch (err) {
+		console.log(err)
 	}
 }
 

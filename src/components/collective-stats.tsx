@@ -18,7 +18,7 @@ export default async function CollectiveStats() {
 	return (
 		<section>
 			<div className="w-full mx-auto px-4 sm:px-6">
-				<div className="pb-12 md:pb-20">
+				<div className="py-12 md:py-20">
 
 					<div className="max-w-3xl text-center pb-12 flex mx-auto ">
 						<div className="mx-auto flex gap-3">
