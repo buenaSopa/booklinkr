@@ -148,7 +148,7 @@ export async function getBookByListOfBookId(keys: string[]) {
 			})
 			listOfBook.push(mapToBookFromDB(one_book))
 		}
-		console.log(listOfBook)
+		// console.log(listOfBook)
 		return listOfBook
 	} catch (err) {
 		return []

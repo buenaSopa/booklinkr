@@ -89,7 +89,7 @@ export function Combobox({
 				style={popOverStyles}
 				className='p-0 popover-content-width-same-as-its-trigger'
 			>
-				<Command>
+				<Command shouldFilter={false}>
 					<CommandInput
 						className='text-xl'
 						placeholder={searchPlaceholder}
@@ -123,12 +123,6 @@ export function Combobox({
 										setOpen(false)
 									}}
 								>
-									{/* <Check */}
-									{/* 	className={cn( */}
-									{/* 		'mr-2 h-4 w-4', */}
-									{/* 		value === item.value ? 'opacity-100' : 'opacity-0' */}
-									{/* 	)} */}
-									{/* /> */}
 									{item.label}
 									<div className='relative h-[50px] w-[35px] ml-5' data-aos="zoom-y-out" data-aos-delay="250">
 										<Image src={item.url!} fill alt='cover' />
