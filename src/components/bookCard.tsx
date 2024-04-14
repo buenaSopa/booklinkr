@@ -30,7 +30,7 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { CopyToClipboard } from 'react-copy-to-clipboard';
 import { useToast } from './ui/use-toast';
-import { transformString } from '@/app/[slug]/page';
+import { transformString } from '@/lib/utils';
 
 type BookProps = {
 	book: Book

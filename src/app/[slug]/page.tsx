@@ -4,17 +4,11 @@ import { addBook, checkBookshelfExistBySlug, getBookByListOfBookId, getBookBySlu
 import BookCard from "@/components/bookCard"
 import { ComboBoxItemType, Combobox } from "@/components/comboBox"
 import HeaderSlug from "@/components/ui/header-slug"
+import { transformString } from "@/lib/utils"
 import { Book, mapToBook } from "@/types/book"
 import { useSession } from "next-auth/react"
 import { useEffect, useState, useTransition } from "react";
 
-
-export function transformString(input: string): string {
-	const words = input.trim().split(/\s+/);
-	const transformedString = words.join('+');
-
-	return transformedString;
-}
 
 async function formatSearch(jsonData: any[]): Promise<Book[]> {
 	const beautifiedData: Book[] = [];
