@@ -2,19 +2,10 @@
 
 import React, { useEffect, useState } from 'react';
 import { Dispatch, SetStateAction } from "react";
-import {
-	Dialog,
-	DialogContent,
-	DialogDescription,
-	DialogHeader,
-	DialogTitle,
-	DialogTrigger,
-} from "@/components/ui/dialog"
 import { IconCopy, IconExternalLink, IconX } from '@tabler/icons-react';
 import { useSession } from 'next-auth/react';
 import { Button } from './ui/button';
 import { removeBookByKeyAndBookshelfId } from '@/action/db';
-import ReactStars from "react-rating-stars-component";
 import { Book } from '@/types/book';
 import {
 	Drawer,
@@ -31,6 +22,7 @@ import Image from 'next/image';
 import { CopyToClipboard } from 'react-copy-to-clipboard';
 import { useToast } from './ui/use-toast';
 import { transformString } from '@/lib/utils';
+import { Rating } from 'react-simple-star-rating';
 
 type BookProps = {
 	book: Book
@@ -44,6 +36,7 @@ const BookCard: React.FC<BookProps> = ({ book, myBooks, setMyBooks, isUserBooksh
 	const session = useSession()
 	const [open, setOpen] = useState(false);
 	const { toast } = useToast()
+	const [rating, setRating] = useState(0)
 
 	const handleRemoveButton = async (key: string) => {
 		console.log(session.data?.user?.id, key)
@@ -52,6 +45,17 @@ const BookCard: React.FC<BookProps> = ({ book, myBooks, setMyBooks, isUserBooksh
 		setMyBooks((state) => state.filter((item) => item.key !== book.key))
 		setOpen(false)
 	}
+
+
+
+	// Catch Rating value
+	const handleRating = (rate: number) => {
+		setRating(rate)
+	}
+
+	const onPointerEnter = () => console.log('Enter')
+	const onPointerLeave = () => console.log('Leave')
+	const onPointerMove = (value: number, index: number) => console.log(value, index)
 
 	// console.log(book)
 
@@ -106,11 +110,15 @@ const BookCard: React.FC<BookProps> = ({ book, myBooks, setMyBooks, isUserBooksh
 
 					)}
 
-					<div className='mx-auto text-center'>
-						<ReactStars
-							count={5}
-							size={24}
-							activeColor="#ffd700"
+					<div className='mx-auto text-center flex flex-col p-2'>
+						<Rating
+							SVGstyle={{ display: 'inline-block' }}
+							allowFraction
+							onClick={handleRating}
+							onPointerEnter={onPointerEnter}
+							onPointerLeave={onPointerLeave}
+							onPointerMove={onPointerMove}
+						/* Available Props */
 						/>
 						(rating soon)
 					</div>
