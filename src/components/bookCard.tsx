@@ -60,7 +60,7 @@ const BookCard: React.FC<BookProps> = ({ book, myBooks, setMyBooks, isUserBooksh
 			<Drawer>
 				<DrawerTrigger className='w-full'>
 
-					<div className={`h-60 md:h-80 bg-cover bg-center bg-darkgreen`} style={{ backgroundImage: `url(${book.cover})` }}></div>
+					<div className={`h-60 md:h-96 bg-cover bg-center bg-darkgreen`} style={{ backgroundImage: `url(${book.cover})` }}></div>
 					<div className="p-4">
 						<h1 className="text-gray-900 font-bold text-xl ">
 							{book.title}
