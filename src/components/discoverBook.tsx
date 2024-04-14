@@ -45,7 +45,7 @@ export default async function DiscoverBook() {
 	// @ts-ignore
 	const lists = splitIntoThreeLists(books);
 
-	console.log(lists)
+	// console.log(lists)
 
 	const marque = (item: BookData) => {
 		return (

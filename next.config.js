@@ -12,8 +12,15 @@ const nextConfig = {
 				hostname: 'openlibrary.org',
 				port: '',
 			},
+			{
+				protocol: 'https',
+				hostname: 'images-na.ssl-images-amazon.com',
+				port: '',
+			},
 		],
 	},
 }
 
 module.exports = nextConfig
+
+

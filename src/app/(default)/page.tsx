@@ -28,7 +28,7 @@ export default async function Home() {
 			<FeaturesBlocks />
 			<Faq />
 			{/* <Testimonials /> */}
-			<Newsletter />
+			{/* <Newsletter /> */}
 		</>
 	)
 }

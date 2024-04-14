@@ -61,7 +61,7 @@ export function Combobox({
 	onSearchChange
 }: ComboboxProps) {
 	const [open, setOpen] = React.useState(false)
-	// console.log(items)
+	console.log(items)
 
 	const handleOnSearchChange = useDebouncedCallback((e: string) => {
 		if (e === '') {

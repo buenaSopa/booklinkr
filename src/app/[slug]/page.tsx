@@ -9,7 +9,7 @@ import { useSession } from "next-auth/react"
 import { useEffect, useState, useTransition } from "react";
 
 
-function transformString(input: string): string {
+export function transformString(input: string): string {
 	const words = input.trim().split(/\s+/);
 	const transformedString = words.join('+');
 
@@ -18,7 +18,7 @@ function transformString(input: string): string {
 
 async function formatSearch(jsonData: any[]): Promise<Book[]> {
 	const beautifiedData: Book[] = [];
-	console.log(jsonData)
+	// console.log(jsonData)
 
 	// Process items, preserving original data and adding ex_link
 	const processedItems = jsonData.map((item) => {
@@ -118,7 +118,7 @@ export default function Page({ params }: { params: { slug: string } }) {
 		try {
 			console.log(transformString(value))
 			// const response = await fetch(`https://openlibrary.org/search.json?title=${transformString(value)}&limit=5&fields=author_name,cover_edition_key,title,key`)
-			const response = await fetch(`https://openlibrary.org/search.json?q=${transformString(value)}&mode=everything&limit=4&fields=author_name,cover_edition_key,title,key,id_goodreads,id_librarything`)
+			const response = await fetch(`https://openlibrary.org/search.json?q=${transformString(value)}&mode=everything&limit=4&fields=author_name,isbn,cover_edition_key,title,key,id_goodreads,id_librarything`)
 			// console.log(`https://openlibrary.org/search.json?q=${transformString(value)}&mode=everything&limit=12&fields=author_name,cover_edition_key,title,key,id_goodreads,id_librarything`)
 			const json = await response.json()
 			const searchResult = await formatSearch(json.docs)

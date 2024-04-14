@@ -14,6 +14,7 @@ import { IconCopy, IconExternalLink, IconX } from '@tabler/icons-react';
 import { useSession } from 'next-auth/react';
 import { Button } from './ui/button';
 import { removeBookByKeyAndBookshelfId } from '@/action/db';
+import ReactStars from "react-rating-stars-component";
 import { Book } from '@/types/book';
 import {
 	Drawer,
@@ -29,6 +30,7 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { CopyToClipboard } from 'react-copy-to-clipboard';
 import { useToast } from './ui/use-toast';
+import { transformString } from '@/app/[slug]/page';
 
 type BookProps = {
 	book: Book
@@ -51,7 +53,7 @@ const BookCard: React.FC<BookProps> = ({ book, myBooks, setMyBooks, isUserBooksh
 		setOpen(false)
 	}
 
-	console.log(book)
+	// console.log(book)
 
 	return (
 		<div className="max-w-xs w-full mx-auto bg-white shadow-lg rounded-lg overflow-hidden" data-aos="zoom-y-out">
@@ -91,36 +93,52 @@ const BookCard: React.FC<BookProps> = ({ book, myBooks, setMyBooks, isUserBooksh
 						<DrawerDescription>{book.author_name}</DrawerDescription>
 					</DrawerHeader>
 
-					{book.cover != null && (
+					{book.cover != null ? (
 						<div className='relative h-[320px] w-[200px] mx-auto' data-aos="zoom-y-out">
 							<Image src={book.cover} fill alt='cover' />
 						</div>
+					) : (
+						<div className='relative h-[320px] w-[200px] mx-auto bg-darkgreen text-lightbrown text-center flex items-center' data-aos="zoom-y-out">
+							<div className='mx-auto'>
+								No Cover
+							</div>
+						</div>
+
 					)}
+
+					<div className='mx-auto text-center'>
+						<ReactStars
+							count={5}
+							size={24}
+							activeColor="#ffd700"
+						/>
+						(rating soon)
+					</div>
 
 					<DrawerFooter>
 
-						{book.ex_link?.id_goodreads &&
-							<Button
-								className='bg-[#F4F2E9] text-[#503B2B] hover:bg-lightbrown'
+						<Button
+							className='bg-[#F4F2E9] text-[#503B2B] hover:bg-lightbrown'
+						>
+							<Link
+								// href={`https://www.goodreads.com/book/show/${book.ex_link.id_goodreads}`}
+								href={`https://www.goodreads.com/search?utf8=%E2%9C%93&q=${transformString(`${book.title}`)}&search_type=books`}
+								target='_blank'
+								className='w-full'
 							>
-								<Link
-									href={`https://www.goodreads.com/book/show/${book.ex_link.id_goodreads}`}
-									target='_blank'
-									className='w-full'
-								>
-									Goodread (test)
-								</Link>
-							</Button>
-						}
+								Goodreads
+							</Link>
+						</Button>
 
 						<Button
-							className='bg-[#E1DCC5] text-[#518ABE] hover:text-lightbrown'
+							// className='bg-[#E1DCC5] text-[#518ABE] hover:text-lightbrown'
+							disabled
 						>
 							<Link
 								target='_blank'
 								className='w-full'
 								href={`https://openlibrary.org${book.key}`}>
-								OpenLibrary
+								Review (soon)
 							</Link>
 						</Button>
 

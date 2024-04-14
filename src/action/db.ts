@@ -25,7 +25,7 @@ export async function checkBookshelfExistBySlug(slug: string) {
 			where: eq(bookshelf.slug, slug)
 		})
 
-		console.log(result)
+		// console.log(result)
 		return result
 	} catch (err) {
 		console.log(err)
@@ -131,7 +131,7 @@ export async function getBookBySlug(slug: string) {
 		})
 
 		const res = await db.select().from(bookOnBookshelf).where(eq(bookOnBookshelf.bookshelf_id, bookshelfId?.id!))
-		console.log(res)
+		// console.log(res)
 		return res
 	} catch (err) {
 		return []
