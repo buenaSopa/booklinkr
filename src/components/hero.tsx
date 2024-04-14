@@ -29,14 +29,14 @@ export default async function Hero() {
 					<div className={`text-center pb-12 md:pb-16 ${simple.className}`}>
 						<h1 className="text-3xl md:text-3xl leading-tighter tracking-tighter mb-2 font-thin" data-aos="zoom-y-out">
 							<Balancer>
-								Connect better with fellow book readers
-							</Balancer>
+								Compile all your favorite books into
+								</Balancer>
+								<Link href={"https://www.booklinkr.com/bryan-the-founder"} target="_blank" ><span className='text-darkbrown hover:text-darkgreen'> one link</span></Link>
 						</h1>
 
 						<p className={`mb-24 text-lg ${simple.className}`} data-aos="zoom-y-out" data-aos-delay="150">
 							<Balancer>
-								by sharing all your favorite reads with
-								<Link href={"https://www.booklinkr.com/bryan-the-founder"} target="_blank" ><span className='text-darkbrown hover:text-darkgreen'> one link</span></Link>
+								making it simple to share it to friends and followers
 							</Balancer>
 						</p>
 
