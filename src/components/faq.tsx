@@ -35,7 +35,7 @@ export default function Faq() {
 							<AccordionContent>
 								I try to work on it every time I have free, but due to a lack of manpower, I can't find all the existing bugs. Here are a few though:<a className="font-bold">
 									since I'm using a third-party API to retrieve books and cover images, if it's down, the cover image won't appear. Additionally, the results
-									of Goodreads and LibraryThing might appear in different languages due to inconsistencies in the data from the API.</a> My apologies for any
+									of the search query might be wrong at first, but if you add on the author name it should show u the right result</a> My apologies for any
 								inconvenience, but I would also be grateful if you could let me know of any issues or bugs. I will fix them as soon as possible. You can contact me via
 								<a href="mailto:bryankoh17102@gmail.com" className="underline" target="_blank"> email</a> or
 								<a href="https://twitter.com/officialbkyh" className="underline" target="_blank"> Twitter </a>.
