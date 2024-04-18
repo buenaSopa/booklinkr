@@ -53,8 +53,7 @@ const BookCard: React.FC<BookProps> = ({ book, myBooks, setMyBooks, isUserBooksh
 	useEffect(() => {
 		(async () => {
 		const res = await getUserIdBySlug(params.slug)
-		console.log(res)
-		setBookshelfId(res)
+		setBookshelfId(res as string)
 		})()
 	}, [])
 

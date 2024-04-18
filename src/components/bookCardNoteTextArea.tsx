@@ -37,8 +37,6 @@ type NoteTextAreaProp = {
 
 export const BookCardNoteTextArea: React.FC<NoteTextAreaProp> = ({ bookId, bookshelfId, isUserBookshelf }) => {
 
-	const [note, setNote] = useState("")
-
 	useEffect(() => {
 		(async () => {
 			console.log('calling note')
@@ -49,7 +47,6 @@ export const BookCardNoteTextArea: React.FC<NoteTextAreaProp> = ({ bookId, books
 
 	const form = useForm<z.infer<typeof FormSchema>>({
 		resolver: zodResolver(FormSchema),
-		defaultValues: { note: note }
 	})
 
 	async function onSubmit(data: z.infer<typeof FormSchema>) {
