@@ -73,7 +73,8 @@ export const BookCardNoteTextArea: React.FC<NoteTextAreaProp> = ({ bookId, books
 							<FormControl>
 								<Textarea
 									placeholder="Note for this book"
-									className="h-[400px]"
+									className="h-[400px] text-black"
+									disabled={!isUserBookshelf}
 									{...field}
 								/>
 							</FormControl>
