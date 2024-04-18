@@ -5,7 +5,7 @@ import { Dispatch, SetStateAction } from "react";
 import { IconCopy, IconExternalLink, IconX } from '@tabler/icons-react';
 import { useSession } from 'next-auth/react';
 import { Button } from './ui/button';
-import { removeBookByKeyAndBookshelfId } from '@/action/db';
+import { getUserIdBySlug, removeBookByKeyAndBookshelfId } from '@/action/db';
 import { Book } from '@/types/book';
 import {
 	Drawer,
@@ -17,12 +17,22 @@ import {
 	DrawerTitle,
 	DrawerTrigger,
 } from "@/components/ui/drawer"
+import {
+	Dialog,
+	DialogContent,
+	DialogDescription,
+	DialogHeader,
+	DialogTitle,
+	DialogTrigger,
+} from "@/components/ui/dialog"
 import Link from 'next/link';
 import Image from 'next/image';
 import { CopyToClipboard } from 'react-copy-to-clipboard';
 import { useToast } from './ui/use-toast';
 import { transformString } from '@/lib/utils';
 import { Rating } from 'react-simple-star-rating';
+import { BookCardNoteTextArea } from './bookCardNoteTextArea';
+import { useParams } from 'next/navigation'
 
 type BookProps = {
 	book: Book
@@ -37,16 +47,25 @@ const BookCard: React.FC<BookProps> = ({ book, myBooks, setMyBooks, isUserBooksh
 	const [open, setOpen] = useState(false);
 	const { toast } = useToast()
 	const [rating, setRating] = useState(0)
+	const params = useParams<{ slug: string }>()
+	const [bookshelfId, setBookshelfId] = useState("")
+
+	useEffect(() => {
+		(async () => {
+		const res = await getUserIdBySlug(params.slug)
+		console.log(res)
+		setBookshelfId(res)
+		})()
+	}, [])
+
 
 	const handleRemoveButton = async (key: string) => {
-		console.log(session.data?.user?.id, key)
+		// console.log(session.data?.user?.id, key)
 		const res = await removeBookByKeyAndBookshelfId(key, session.data?.user?.id!)
 		console.log(res && "successfully remove")
 		setMyBooks((state) => state.filter((item) => item.key !== book.key))
 		setOpen(false)
 	}
-
-
 
 	// Catch Rating value
 	const handleRating = (rate: number) => {
@@ -138,32 +157,25 @@ const BookCard: React.FC<BookProps> = ({ book, myBooks, setMyBooks, isUserBooksh
 							</Link>
 						</Button>
 
-						<Button
-							// className='bg-[#E1DCC5] text-[#518ABE] hover:text-lightbrown'
-							disabled
-						>
-							<Link
-								target='_blank'
-								className='w-full'
-								href={`https://openlibrary.org${book.key}`}>
-								Review (soon)
-							</Link>
-						</Button>
 
-
-						{/* {book.ex_link?.id_libranything && */}
-						{/* 	<Button */}
-						{/* 		className='bg-[#4E3431] text-[#FBFBFB]' */}
-						{/* 	> */}
-						{/* 		<Link */}
-						{/* 			className='w-full' */}
-						{/* 			href={`https://www.librarything.com/work/${book.ex_link.id_libranything}`} */}
-						{/* 			target='_blank' */}
-						{/* 		> */}
-						{/* 			LibraryThing (test) */}
-						{/* 		</Link> */}
-						{/* 	</Button> */}
-						{/* } */}
+						<Dialog>
+							<DialogTrigger>
+								<Button
+									className='w-full'
+								// className='bg-[#E1DCC5] text-[#518ABE] hover:text-lightbrown'
+								>
+									Note
+								</Button>
+							</DialogTrigger>
+							<DialogContent>
+								<DialogHeader>
+									<DialogTitle>Note</DialogTitle>
+									<DialogDescription>
+										<BookCardNoteTextArea isUserBookshelf={isUserBookshelf} bookId={book.key} bookshelfId={bookshelfId} />
+									</DialogDescription>
+								</DialogHeader>
+							</DialogContent>
+						</Dialog>
 
 
 						{isUserBookshelf &&

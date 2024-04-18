@@ -34,7 +34,8 @@ export const bookRelation = relations(book, ({ many }) => ({
 
 export const bookOnBookshelf = pgTable('book_bookshelf', {
 	book_id: text("book_id").notNull().references(() => book.work_key),
-	bookshelf_id: text("bookself_id").notNull().references(() => bookshelf.id)
+	bookshelf_id: text("bookself_id").notNull().references(() => bookshelf.id),
+	extra: jsonb('extra').default(sql`'{"note": "", "rating": ""}'::jsonb`),
 },
 	(t) => ({
 		pk: primaryKey(t.bookshelf_id, t.book_id)

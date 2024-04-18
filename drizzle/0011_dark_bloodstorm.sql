@@ -1,0 +1,1 @@
+ALTER TABLE "book_bookshelf" ADD COLUMN "extra" jsonb DEFAULT '{"note": "", "rating": ""}'::jsonb;

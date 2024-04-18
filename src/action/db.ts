@@ -67,6 +67,20 @@ export async function getUserSlug(userId: string) {
 	}
 }
 
+export async function getUserIdBySlug(slug: string) {
+	try {
+		const res = await db.query.bookshelf.findFirst({
+			where: eq(bookshelf.slug, slug),
+		})
+
+		return res?.id
+	} catch (err) {
+		console.log(err)
+		return false
+	}
+}
+
+
 export async function addBook(book_obj: Book, slug: string) {
 	try {
 
@@ -208,3 +222,29 @@ export async function getBookRandom() {
 		return []
 	}
 }
+
+export async function updateNotebyBookonBookshelf(bookId: string, bookshelfId: string, note: { note: string }) {
+	try {
+		await db.update(bookOnBookshelf).set({ extra: sql`${note}::jsonb` }).where(and(eq(bookOnBookshelf.bookshelf_id, bookshelfId), eq(bookOnBookshelf.book_id, bookId)))
+	} catch (e) {
+		console.log(e)
+	}
+}
+
+export async function getNotebyBookonBookshelf(bookId: string, bookshelfId: string) {
+	try {
+		const res = await db.query.bookOnBookshelf.findFirst({
+			where: and(eq(bookOnBookshelf.bookshelf_id, bookshelfId), eq(bookOnBookshelf.book_id, bookId))
+		})
+
+		console.log(res)
+		return res
+	} catch (e) {
+		console.log(e)
+	}
+}
+
+// await db.update(book).set({ ex_link: sql`${book_obj.ex_link}::jsonb` }).where(eq(book.work_key, book_obj.key))
+
+// await db.insert(book).values({ title: book_obj.title, cover_url: book_obj.cover, author: book_obj.author_name, work_key: book_obj.key, ex_link: sql`${book_obj.ex_link}::jsonb` })
+
