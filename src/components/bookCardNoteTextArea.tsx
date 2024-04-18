@@ -41,7 +41,8 @@ export const BookCardNoteTextArea: React.FC<NoteTextAreaProp> = ({ bookId, books
 		(async () => {
 			console.log('calling note')
 			const res = await getNotebyBookonBookshelf(bookId, bookshelfId)
-			form.setValue("note", res?.extra.note);
+			//@ts-ignore
+			form.setValue("note", res?.extra?.note || "");
 		})()
 	}, [])
 
