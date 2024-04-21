@@ -22,9 +22,7 @@ export default async function CollectiveStats() {
 
 					<div className="max-w-3xl text-center pb-12 flex mx-auto ">
 						<div className="mx-auto flex gap-3">
-							<IconCarrot />
 							<p className="text-xl text-darkgreen">Booklinkr community stats </p>
-							<IconCarrot />
 						</div>
 					</div>
 
@@ -54,15 +52,6 @@ export default async function CollectiveStats() {
 							</CardHeader>
 						</Card>
 					</div>
-
-					<div className="max-w-3xl text-center pt-12 flex mx-auto ">
-						<div className="mx-auto flex gap-3">
-							<IconConfetti />
-							<p className="text-xl text-darkgreen">Help us grow</p>
-							<IconConfetti />
-						</div>
-					</div>
-
 
 					{/* <div className="relative bg-darkgreen rounded py-10 px-8 md:py-16 md:px-12 shadow-2xl overflow-hidden flex" data-aos="zoom-y-out"> */}
 
