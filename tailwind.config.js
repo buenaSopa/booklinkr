@@ -26,12 +26,17 @@ module.exports = {
 					DEFAULT: "#5F6F52",
 					foreground: "hsl(var(--primary-foreground))",
 				},
+					// DEFAULT: "#FEFAE0",
 				lightbrown: {
 					DEFAULT: "#FEFAE0",
 					foreground: "hsl(var(--primary-foreground))",
 				},
 				darkbrown: {
 					DEFAULT: "#B99470",
+					foreground: "hsl(var(--primary-foreground))",
+				},
+				darkgrey: {
+					DEFAULT: "#2E2E2E",
 					foreground: "hsl(var(--primary-foreground))",
 				},
 				border: "hsl(var(--border))",

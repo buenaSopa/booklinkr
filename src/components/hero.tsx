@@ -28,12 +28,13 @@ export default async function Hero() {
 					{/* Section header */}
 					<div className={`text-center pb-12 md:pb-16 ${simple.className}`}>
 						<h1 className="text-3xl md:text-3xl leading-tighter tracking-tighter mb-2 font-thin" data-aos="zoom-y-out">
-							For Book Readers who
+							For Book Readers who {' '}
+							<Balancer>
 							Love Sharing
-
+							</Balancer>
 						</h1>
 
-						<p className={`mb-24 text-lg ${simple.className}`} data-aos="zoom-y-out" data-aos-delay="150">
+						<p className={`mb-10 text-lg ${simple.className}`} data-aos="zoom-y-out" data-aos-delay="150">
 							<Balancer>
 								Compile all your favorite books into
 							</Balancer>
@@ -58,7 +59,7 @@ export default async function Hero() {
 								videoHeight={1080} />
 
 
-							<div className="max-w-xs mx-auto sm:max-w-none sm:flex sm:justify-center mt-24" data-aos="zoom-y-out" data-aos-delay="300">
+							<div className="max-w-xs mx-auto sm:max-w-none sm:flex sm:justify-center mt-16" data-aos="zoom-y-out" data-aos-delay="300">
 								{/* <Link href={site.formLink} target='_blank'> */}
 								{/* 	<Button className={`text-2xl ${maely.className} w-full mb-4 sm:w-auto sm:mb-0`}> */}
 								{/* 		Join waiting list */}
