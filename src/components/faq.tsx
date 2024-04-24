@@ -11,12 +11,12 @@ export default function Faq() {
 		<section>
 			<div className="max-w-6xl mx-auto px-4 sm:px-6">
 				<div className="pb-8 md:pb-10 pt-16 md:pt-32">
-					<div className="text-2xl text-center mb-5">Founder's note</div>
+					<div className="text-2xl text-center mb-5">Developer's note</div>
 					<Accordion type="single" collapsible className="w-full">
 						<AccordionItem value="item-2">
 							<AccordionTrigger>Preface</AccordionTrigger>
 							<AccordionContent>
-								Hi, I'm Bryan, the sole founder of Booklinkr. The idea originated from conversations with friends who would often ask for book
+								Hi, I'm Bryan, the sole developer of Booklinkr. The idea originated from conversations with friends who would often ask for book
 								recommendations. I found myself repeatedly answering these queries, and it dawned on me that there should be a platform where
 								people can share their book recommendations socially.
 							</AccordionContent>
@@ -42,17 +42,17 @@ export default function Faq() {
 							</AccordionContent>
 						</AccordionItem>
 
-						<AccordionItem value="item-5">
-							<AccordionTrigger>Support</AccordionTrigger>
-							<AccordionContent>
-								If you want to update your link or any request, <a href="https://twitter.com/officialbkyh" className="underline" target="_blank"> DM me </a>.
-							</AccordionContent>
-						</AccordionItem>
+						{/* <AccordionItem value="item-5"> */}
+						{/* 	<AccordionTrigger>Support</AccordionTrigger> */}
+						{/* 	<AccordionContent> */}
+						{/* 		If you want to update your link or any request, <a href="https://twitter.com/officialbkyh" className="underline" target="_blank"> DM me </a>. */}
+						{/* 	</AccordionContent> */}
+						{/* </AccordionItem> */}
 
 						<AccordionItem value="item-4">
 							<AccordionTrigger>More</AccordionTrigger>
 							<AccordionContent>
-								Check out my <a href="https://lifeofamoh.substack.com/" className="underline" target="_blank">Substack</a>, I try to write blogs that help first time founder. Check out my <a href="https://twitter.com/officialbkyh" className="underline" target="_blank"> Twitter </a>to follow my journey of a indie dev if interested. Thanks :)
+								Check out my <a href="https://lifeofamoh.substack.com/" className="underline" target="_blank">Substack</a>, I try to write blogs that help first time founder. Thanks :)
 							</AccordionContent>
 						</AccordionItem>
 					</Accordion>

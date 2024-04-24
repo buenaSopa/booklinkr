@@ -97,15 +97,15 @@ export default function MobileMenu() {
 						{/* 	</Link> */}
 						{/* </li> */}
 
-						<li className='text-center mb-2'>
-							<Link
-								href={"https://twitter.com/officialbkyh"}
-								target='_blank'>
-								<Button>
-									Founder
-								</Button>
-							</Link>
-						</li>
+						{/* <li className='text-center mb-2'> */}
+						{/* 	<Link */}
+						{/* 		href={"https://twitter.com/officialbkyh"} */}
+						{/* 		target='_blank'> */}
+						{/* 		<Button> */}
+						{/* 			Founder */}
+						{/* 		</Button> */}
+						{/* 	</Link> */}
+						{/* </li> */}
 					</ul>
 				</Transition>
 			</div>
